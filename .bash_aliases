@@ -6,13 +6,11 @@ alias p='git push'
 alias po='git push origin'
 alias pokd='git push origin kali-dev'
 alias b='git branch'
-alias pyh='pyh'
 alias brc='vim ~/.bashrc; source ~/.bashrc'
+alias ppjson='python -c "import sys, json; print json.dumps(json.load(sys.stdin), sort_keys=True, indent=4)"'
 
 cythonize() {
         cython --embed $1.py
             gcc -I/usr/include/python2.7 -o $1 $1.c -lpython2.7
 }
 
-alias ppjson='python -c "import sys, json; print json.dumps(
-json.load(sys.stdin), sort_keys=True, indent=4)"'
