@@ -1,3 +1,6 @@
+alias hej='echo "Hej!" > hej.txt'
+alias brc='vim ~/.bashrc; source ~/.bashrc'
+alias ba='vim ~/.bash_aliases;source ~/.bash_aliases'
 alias ll='ls -l'
 alias l='git log --pretty=oneline|tig'
 alias d='git diff|tig'
@@ -6,11 +9,7 @@ alias p='git push'
 alias po='git push origin'
 alias pom='git push origin master'
 alias b='git branch'
-alias brc='vim ~/.bashrc; source ~/.bashrc'
-alias ppjson='python -c "import sys, json; print json.dumps(json.load(sys.stdin), sort_keys=True, indent=4)"'
-
-cythonize() {
-        cython --embed $1.py
-            gcc -I/usr/include/python2.7 -o $1 $1.c -lpython2.7
+alias sublime='/home/samuel/opt/sublime/sublime_text'
+galaxy_uppmax() {
+    ssh -L 8181:localhost:34598 kalkyl.uppmax.uu.se 'ssh -t -t -L 34598:localhost:8080 $1 "sh /home/samuel/opt/galaxy/run.sh"'
 }
-
