@@ -13,3 +13,4 @@ alias sublime='/home/samuel/opt/sublime/sublime_text'
 galaxy_uppmax() {
     ssh -L 8181:localhost:34598 kalkyl.uppmax.uu.se 'ssh -t -t -L 34598:localhost:8080 $1 "sh /home/samuel/opt/galaxy/run.sh"'
 }
+alias switchjava='sudo update-alternatives --config java'
