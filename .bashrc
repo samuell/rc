@@ -6,4 +6,4 @@ HISTFILESIZE=10000
 source ~/.bash_aliases
 export LESS="-R"
 export EDITOR=geany
-PS1="\u@\h \W $ " 
+PS1="[\u \W]$ " 
