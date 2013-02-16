@@ -11,7 +11,7 @@ set smartindent
 filetype plugin on
 let g:pydiction_location='~/.vim/pydiction-1.2/complete-dict'
 
-"set number
+set number
 set expandtab
 autocmd FileType python runtime! autoload/pythoncomplete.vim
 imap <c-space> <c-x><c-o>
