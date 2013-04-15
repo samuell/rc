@@ -5,7 +5,7 @@ alias ba='vim ~/.bash_aliases;source ~/.bash_aliases'
 alias ls='ls --color=auto -h'
 alias ll='ls -l'
 alias l='git log --pretty=oneline|tig'
-alias d='git diff|tig'
+alias gdiff='git diff|tig'
 alias c='git commit'
 alias p='git push'
 alias gitpp='git pull; git push;'
@@ -21,6 +21,7 @@ topname() {
     top -p $(pgrep -d"," $1);
 }
 alias py='python'
+pd() { builtin pushd "$@">/dev/null; dirs -v; }
 mkcd() {
     mkdir $1;
     cd $1;
@@ -33,6 +34,8 @@ alias .5='cd ../../../../..'
 alias apt-get='sudo apt-get'
 alias inst='apt-get install'
 alias h='history'
+alias dirs='dirs -v'
+alias d='dirs'
 
 ## pass options to free ## 
 alias meminfo='free -m -l -t'
@@ -49,3 +52,4 @@ alias meminfo='free -m -l -t'
    alias cpuinfo='lscpu'
 
 alias cdgtools='cd /home/samuel/opt/galaxy/tools'
+alias pydev='screen -mS PyDev -c ~/.screenrc.pydev'
