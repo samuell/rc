@@ -28,7 +28,7 @@ hi Title		  ctermfg=darkmagenta  	guifg=Magenta
 hi Visual		  term=reverse	cterm=reverse  gui=reverse
 hi WarningMsg	  term=standout    ctermfg=red guifg=Red
 hi Cursor		  guifg=bg	guibg=Green
-hi Comment		  ctermfg=darkgreen   guifg=#337733
+hi Comment		  ctermfg=darkcyan guifg=#337733
 hi Constant		  ctermfg=blue  guifg=#0000ff
 hi Special		  ctermfg=darkyellow  guifg=Orange
 hi Identifier	  ctermfg=white guifg=white
