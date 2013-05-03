@@ -1,3 +1,4 @@
+#!/bin/bash
 alias editalias='vim ~/.bash_aliases; source ~/.bash_aliases'
 alias hej='echo "Hej!" > hej.txt'
 alias brc='vim ~/.bashrc; source ~/.bashrc'
@@ -53,3 +54,10 @@ alias meminfo='free -m -l -t'
 
 alias cdgtools='cd /home/samuel/opt/galaxy/tools'
 alias pydev='screen -mS PyDev -c ~/.screenrc.pydev'
+
+cythonize() {
+    cython --embed $1.py
+    gcc -I/usr/include/python2.7 -o $1 $1.c -lpython2.7
+}
+
+alias c='clear'

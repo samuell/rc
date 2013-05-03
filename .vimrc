@@ -1,4 +1,5 @@
 syntax on
+colorscheme saml
 set showmatch
 set ignorecase
 set showmode
