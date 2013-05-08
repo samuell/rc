@@ -1,8 +1,8 @@
 #!/bin/bash
 alias editalias='vim ~/.bash_aliases; source ~/.bash_aliases'
 alias hej='echo "Hej!" > hej.txt'
-alias brc='vim ~/.bashrc; source ~/.bashrc'
-alias ba='vim ~/.bash_aliases;source ~/.bash_aliases'
+alias ebrc='vim ~/.bashrc; source ~/.bashrc'
+alias eba='vim ~/.bash_aliases;source ~/.bash_aliases'
 alias ls='ls --color=auto -h'
 alias ll='ls -l'
 alias l='git log --pretty=oneline|tig'
@@ -42,15 +42,15 @@ alias d='dirs'
 alias meminfo='free -m -l -t'
  
 ## get top process eating memory
- alias psmem='ps auxf | sort -nr -k 4'
- alias psmem10='ps auxf | sort -nr -k 4 | head -10'
+alias psmem='ps auxf | sort -nr -k 4'
+alias psmem10='ps auxf | sort -nr -k 4 | head -10'
   
 ## get top process eating cpu ##
-  alias pscpu='ps auxf | sort -nr -k 3'
-  alias pscpu10='ps auxf | sort -nr -k 3 | head -10'
+alias pscpu='ps auxf | sort -nr -k 3'
+alias pscpu10='ps auxf | sort -nr -k 3 | head -10'
    
 ## Get server cpu info ##
-   alias cpuinfo='lscpu'
+alias cpuinfo='lscpu'
 
 alias cdgtools='cd /home/samuel/opt/galaxy/tools'
 alias pydev='screen -mS PyDev -c ~/.screenrc.pydev'
