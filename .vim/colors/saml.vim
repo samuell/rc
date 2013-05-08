@@ -24,7 +24,7 @@ hi LineNr		  term=underline    ctermfg=grey	guifg=grey
 hi Question		  term=standout    ctermfg=darkgreen	  guifg=Green
 hi StatusLine	  ctermfg=lightblue ctermbg=white  guifg=blue guibg=white
 hi StatusLineNC   term=reverse	ctermfg=white ctermbg=lightblue guifg=white guibg=blue
-hi Title		  ctermfg=darkmagenta  	guifg=Magenta
+hi Title		  ctermfg=magenta  	guifg=Magenta
 hi Visual		  term=reverse	cterm=reverse  gui=reverse
 hi WarningMsg	  term=standout    ctermfg=red guifg=Red
 hi Cursor		  guifg=bg	guibg=Green
@@ -53,7 +53,7 @@ hi link Function		Identifier
 hi link Conditional		Statement
 hi link Repeat			Statement
 hi link Label			Statement
-hi Operator        ctermfg=red
+hi Operator             ctermfg=darkred
 hi link Keyword			Statement
 hi link Exception		Statement
 hi link Include			Keyword
