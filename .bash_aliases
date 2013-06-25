@@ -22,6 +22,7 @@ topname() {
     top -p $(pgrep -d"," $1);
 }
 alias py='python'
+alias ipy='ipython'
 pd() { builtin pushd "$@">/dev/null; dirs -v; }
 mkcd() {
     mkdir $1;
@@ -56,8 +57,10 @@ alias cdgtools='cd /home/samuel/opt/galaxy/tools'
 alias pydev='screen -mS PyDev -c ~/.screenrc.pydev'
 
 cythonize() {
-    cython --embed $1.py
-    gcc -I/usr/include/python2.7 -o $1 $1.c -lpython2.7
+    cython --embed $1.pyx
+    gcc -I/usr/include/python2.7 -O3 -o $1 $1.c -lpython2.7
 }
 
 alias c='clear'
+alias dirsizes='{ for f in `find -maxdepth 1 -type d`; do du -sh $f; done; }|sort -h'
+alias goide='sh ~/opt/goide/bin/idea.sh &'
