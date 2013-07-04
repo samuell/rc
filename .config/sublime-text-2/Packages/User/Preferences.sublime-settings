@@ -1,0 +1,21 @@
+{
+	"color_scheme": "Packages/Color Scheme - Default/Saml.tmTheme",
+	"draw_indent_guides": false,
+	"fade_fold_buttons": true,
+	"file_include_patterns":
+	[
+		"*.go",
+		"*.d"
+	],
+	"fold_buttons": true,
+	"gutter": true,
+	"ignored_packages":
+	[
+		"",
+		"Vintage"
+	],
+	"line_numbers": true,
+	"margin": 0,
+	"wrap_width": 79,
+	"font_size": 9
+}
