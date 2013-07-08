@@ -9,3 +9,4 @@ export LESS="-R"
 export EDITOR=vim
 PS1="[\u \W]$ " 
 export IDEA_JDK=/usr/lib/jvm/jdk1.6.0
+alias transparent-windows='xcompmgr -c -t-5 -l-5 -r4.2 -o.55 &'

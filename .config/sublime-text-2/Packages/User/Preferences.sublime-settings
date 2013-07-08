@@ -1,5 +1,5 @@
 {
-	"color_scheme": "Packages/Color Scheme - Default/Saml.tmTheme",
+	"color_scheme": "Packages/Color Scheme - Default/SamlDark.tmTheme",
 	"draw_indent_guides": false,
 	"fade_fold_buttons": true,
 	"file_include_patterns":
@@ -16,6 +16,5 @@
 	],
 	"line_numbers": true,
 	"margin": 0,
-	"wrap_width": 79,
-	"font_size": 9
+	"wrap_width": 79
 }

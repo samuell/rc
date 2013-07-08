@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>name</key>
-	<string>Saml</string>
+	<string>Saml Dark</string>
 	<key>author</key>
 	<string>Samuel Lampa</string>
 	<key>settings</key>
@@ -14,19 +14,19 @@
 				<key>bracketsForeground</key>
 				<string>#CC0000</string>
 				<key>background</key>
-				<string>#FFFFFF</string>
+				<string>#000000</string>
 				<key>caret</key>
-				<string>#000000</string>
+				<string>#FFFFFF</string>
 				<key>foreground</key>
-				<string>#000000</string>
+				<string>#EFEFEF</string>
 				<key>invisibles</key>
 				<string>#efefef</string>
 				<key>lineHighlight</key>
-				<string>#00000012</string>
+				<string>#333333</string>
 				<key>selection</key>
-				<string>#efefef</string>
+				<string>#444400</string>
 				<key>gutterForeground</key>
-				<string>#bfbfbf</string>
+				<string>#444444</string>
 			</dict>
 		</dict>
 		<dict>
@@ -39,7 +39,7 @@
 				<key>fontStyle</key>
 				<string></string>
 				<key>foreground</key>
-				<string>#336633</string>
+				<string>#99CA4B</string>
 			</dict>
 		</dict>
 		<dict>
@@ -52,7 +52,7 @@
 				<key>fontStyle</key>
 				<string></string>
 				<key>foreground</key>
-				<string>#000099</string>
+				<string>#EFEFEF</string>
 			</dict>
 		</dict>
 		<dict>
@@ -63,9 +63,9 @@
 			<key>settings</key>
 			<dict>
 				<key>fontStyle</key>
-				<string>bold</string>
+				<string></string>
 				<key>foreground</key>
-				<string>#000000</string>
+				<string>#00bbff</string>
 			</dict>
 		</dict>
 		<dict>
@@ -78,7 +78,7 @@
 				<key>fontStyle</key>
 				<string></string>
 				<key>foreground</key>
-				<string>#0000ff</string>
+				<string>#9900ff</string>
 			</dict>
 		</dict>
 		<dict>
@@ -91,7 +91,7 @@
 				<key>fontStyle</key>
 				<string></string>
 				<key>foreground</key>
-				<string>#0000ff</string>
+				<string>#EFEFEF</string>
 			</dict>
 		</dict>
 		<dict>
@@ -104,7 +104,7 @@
 				<key>fontStyle</key>
 				<string></string>
 				<key>foreground</key>
-				<string>#0000ff</string>
+				<string>#EFEFEF</string>
 			</dict>
 		</dict>
 		<dict>
@@ -117,7 +117,7 @@
 				<key>fontStyle</key>
 				<string></string>
 				<key>foreground</key>
-				<string>#990099</string>
+				<string>#ff00ff</string>
 			</dict>
 		</dict>
 		<dict>
@@ -130,7 +130,7 @@
 				<key>fontStyle</key>
 				<string></string>
 				<key>foreground</key>
-				<string>#770077</string>
+				<string>#ff00ff</string>
 			</dict>
 		</dict>
 		<dict>
@@ -156,7 +156,7 @@
 				<key>fontStyle</key>
 				<string>bold</string>
 				<key>foreground</key>
-				<string>#000000</string>
+				<string>#00FF00</string>
 			</dict>
 		</dict>
 		<dict>
@@ -169,7 +169,7 @@
 				<key>fontStyle</key>
 				<string></string>
 				<key>foreground</key>
-				<string>#000099</string>
+				<string>#EFEFEF</string>
 			</dict>
 		</dict>
 		<dict>
@@ -180,7 +180,7 @@
 			<key>settings</key>
 			<dict>
 				<key>foreground</key>
-				<string>#000099</string>
+				<string>#EFEFEF</string>
 			</dict>
 		</dict>
 		<dict>
@@ -191,7 +191,7 @@
 			<key>settings</key>
 			<dict>
 				<key>foreground</key>
-				<string>#000099</string>
+				<string>#EFEFEF</string>
 			</dict>
 		</dict>
 		<dict>
@@ -202,7 +202,7 @@
 			<key>settings</key>
 			<dict>
 				<key>foreground</key>
-				<string>#000099</string>
+				<string>#EFEFEF</string>
 			</dict>
 		</dict>
 		<dict>
@@ -215,7 +215,7 @@
 				<key>fontStyle</key>
 				<string></string>
 				<key>foreground</key>
-				<string>#000099</string>
+				<string>#EFEFEF</string>
 			</dict>
 		</dict>
 		<dict>
@@ -239,7 +239,7 @@
 				<key>fontStyle</key>
 				<string></string>
 				<key>foreground</key>
-				<string>#000099</string>
+				<string>#EFEFEF</string>
 			</dict>
 		</dict>
 		<dict>
@@ -252,7 +252,7 @@
 				<key>fontStyle</key>
 				<string></string>
 				<key>foreground</key>
-				<string>#000099</string>
+				<string>#EFEFEF</string>
 			</dict>
 		</dict>
 		<dict>
@@ -278,7 +278,7 @@
 				<key>fontStyle</key>
 				<string></string>
 				<key>foreground</key>
-				<string>#000099</string>
+				<string>#EFEFEF</string>
 			</dict>
 		</dict>
 		<dict>
@@ -289,7 +289,7 @@
 			<key>settings</key>
 			<dict>
 				<key>foreground</key>
-				<string>#000000</string>
+				<string>#ff0099</string>
 			</dict>
 		</dict>
 		<dict>
@@ -302,7 +302,7 @@
 				<key>fontStyle</key>
 				<string></string>
 				<key>foreground</key>
-				<string>#CC0000</string>
+				<string>#ff0099</string>
 			</dict>
 		</dict>		
 		<dict>
@@ -387,7 +387,7 @@
 				<key>fontStyle</key>
 				<string></string>
 				<key>foreground</key>
-				<string>#CC00CC</string>
+				<string>#FF00FF</string>
 			</dict>
 		</dict>
 		<dict>
@@ -398,7 +398,7 @@
 			<key>settings</key>
 			<dict>
 				<key>foreground</key>
-				<string>#CC00CC</string>
+				<string>#FF00FF</string>
 			</dict>
 		</dict>
 		<dict>
@@ -457,20 +457,9 @@
 			<key>settings</key>
 			<dict>
 				<key>foreground</key>
-				<string>#CC0000</string>
+				<string>#ff0099</string>
 			</dict>
 		</dict>		
-		<dict>
-			<key>name</key>
-			<string>Go: Brackets</string>
-			<key>scope</key>
-			<string>punctuation.definition</string>
-			<key>settings</key>
-			<dict>
-				<key>foreground</key>
-				<string>#CC0000</string>
-			</dict>
-		</dict>				
 	</array>
 	<key>uuid</key>
 	<string>ADD7FDE7-C6BE-454B-A71A-7951ED54FB04</string>
