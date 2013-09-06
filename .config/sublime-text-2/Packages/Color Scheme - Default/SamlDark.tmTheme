@@ -154,9 +154,9 @@
 			<key>settings</key>
 			<dict>
 				<key>fontStyle</key>
-				<string>bold</string>
+				<string></string>
 				<key>foreground</key>
-				<string>#00FF00</string>
+				<string>#00bbff</string>
 			</dict>
 		</dict>
 		<dict>

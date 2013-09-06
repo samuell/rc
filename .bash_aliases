@@ -7,9 +7,11 @@ alias ls='ls --color=auto -h'
 alias ll='ls -l'
 alias l='git log --pretty=oneline|tig'
 alias gdiff='git diff|tig'
+alias gcommit='git commit'
+alias gpush='git push'
 alias c='git commit'
 alias p='git push'
-alias gitpp='git pull; git push;'
+alias bioclipsepp='git pull origin develop; git push origin develop;'
 alias po='git push origin'
 alias pom='git push origin master'
 alias b='git branch'
@@ -28,14 +30,8 @@ mkcd() {
     mkdir $1;
     cd $1;
 }
-alias ..='cd ..'
-alias ....='cd ../..'
-alias ......='cd ../../..'
-alias .4='cd ../../../..'
-alias .5='cd ../../../../..'
-alias apt-get='sudo apt-get'
-alias get='sudo apt-get install'
-alias inst='apt-get install'
+alias aptg='sudo apt-get install'
+alias apts='apt-cache search'
 alias h='history'
 alias dirs='dirs -v'
 alias d='dirs'
@@ -65,3 +61,28 @@ cythonize() {
 alias c='clear'
 alias dirsizes='{ for f in `find -maxdepth 1 -type d`; do du -sh $f; done; }|sort -h'
 alias goide='sh ~/opt/goide/bin/idea.sh &'
+alias g='geany'
+vs() {
+    vim $1;
+    source $1;
+}
+cl() {
+    cd $1;
+    pwd;
+    ls;
+}
+alias ..='cl ..'
+alias ....='cl ../..'
+alias ......='cl ../../..'
+alias .4='cl ../../../..'
+alias .5='cl ../../../../..'
+alias ea='vs ~/.bash_aliases'
+alias pele='ssh samuell@pele.farmbio.uu.se'
+alias node1='ssh rilnet@node1.rilnet.com'
+alias kalkyl='ssh samuel@kalkyl.uppmax.uu.se'
+alias cdgo='cd ~/code/go/src'
+alias showterm='showterm -e bash'
+alias edittheme_greybird='sudo vim /usr/share/themes/Greybird/gtk-2.0/gtkrc'
+alias kb='setxkbmap'
+alias kbus='setxkbmap us'
+alias kbse='setxkbmap se'
