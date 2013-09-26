@@ -1,4 +1,4 @@
-export PATH=/home/samuel/opt/goide/bin:$PATH
+export PATH=/home/samuel/bin:$PATH
 export PATH=~/scripts:$PATH
 export PATH=~/privscripts:$PATH
 export PATH=~/opt/ldc/bin:~/bin:$PATH
@@ -18,3 +18,4 @@ export GOPATH=/home/samuel/code/go
 
 export SENCHA_CMD_3_0_0="/home/samuel/opt/Sencha/Cmd/3.1.2.342"
 alias bd=". bd -s"
+#lo

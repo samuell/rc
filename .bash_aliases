@@ -9,6 +9,7 @@ alias l='git log --pretty=oneline|tig'
 alias gdiff='git diff|tig'
 alias gcommit='git commit'
 alias gpush='git push'
+alias gadd='git add'
 alias c='git commit'
 alias p='git push'
 alias bioclipsepp='git pull origin develop; git push origin develop;'
@@ -30,7 +31,12 @@ mkcd() {
     mkdir $1;
     cd $1;
 }
+cl() {
+    cd $1;
+    ls -ltr $l;
+}
 alias aptg='sudo apt-get install'
+alias aptr='sudo apt-get remove'
 alias apts='apt-cache search'
 alias h='history'
 alias dirs='dirs -v'
@@ -71,12 +77,13 @@ cl() {
     pwd;
     ls;
 }
-alias ..='cl ..'
-alias ....='cl ../..'
-alias ......='cl ../../..'
-alias .4='cl ../../../..'
-alias .5='cl ../../../../..'
+alias ..='cll ..'
+alias ....='cll ../..'
+alias ......='cll ../../..'
+alias .4='cll ../../../..'
+alias .5='cll ../../../../..'
 alias ea='vs ~/.bash_aliases'
+alias sshpass='ssh -o PubkeyAuthentication=no'
 alias pele='ssh samuell@pele.farmbio.uu.se'
 alias node1='ssh rilnet@node1.rilnet.com'
 alias kalkyl='ssh samuel@kalkyl.uppmax.uu.se'
@@ -86,3 +93,21 @@ alias edittheme_greybird='sudo vim /usr/share/themes/Greybird/gtk-2.0/gtkrc'
 alias kb='setxkbmap'
 alias kbus='setxkbmap us'
 alias kbse='setxkbmap se'
+alias eclipse4='/home/samuel/opt/eclipse/eclipse &'
+alias lo='sudo cpufreq-set -r -d 1.20GHz -u 1.20GHz'
+alias hi='sudo cpufreq-set -r -d 1.20GHz -u 2.20GHz'
+alias max='sudo cpufreq-set -r -d 2.20GHz -u 2.20GHz'
+alias ccinfo='sudo cpufreq-info 2>&1|grep current|less'
+time3() {
+    echo "Benchmarking command: $1"
+    echo "GOMAXPROCS: $GOMAXPROCS"
+    t1=$({ time $@; } 2>&1 |grep real|grep -oP "\d\.\d+")
+    echo "Time 1: $t1"
+    sleep 1
+    t2=$({ time $@; } 2>&1 |grep real|grep -oP "\d\.\d+")
+    echo "Time 2: $t2"
+    sleep 1
+    t3=$({ time $@; } 2>&1 |grep real|grep -oP "\d\.\d+")
+    echo "Time 3: $t3"
+    python -c "print('Average time (3 samples): ' + str(($t1+$t2+$t3)/3.0) + ' s')"
+}
