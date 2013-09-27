@@ -99,15 +99,21 @@ alias hi='sudo cpufreq-set -r -d 1.20GHz -u 2.20GHz'
 alias max='sudo cpufreq-set -r -d 2.20GHz -u 2.20GHz'
 alias ccinfo='sudo cpufreq-info 2>&1|grep current|less'
 time3() {
-    echo "Benchmarking command: $1"
+    if [[ ! -z "$2" ]]; then
+        procs=$2;
+        export GOMAXPROCS=$procs;
+    fi;
+    cmd=$1;
+    echo "Benchmarking command: $cmd"
     echo "GOMAXPROCS: $GOMAXPROCS"
-    t1=$({ time $@; } 2>&1 |grep real|grep -oP "\d\.\d+")
+    t1=$({ time ./$cmd > output.txt; } 2>&1 |grep real|grep -oP "\d\.\d+")
     echo "Time 1: $t1"
     sleep 1
-    t2=$({ time $@; } 2>&1 |grep real|grep -oP "\d\.\d+")
+    t2=$({ time ./$cmd > output.txt; } 2>&1 |grep real|grep -oP "\d\.\d+")
     echo "Time 2: $t2"
     sleep 1
-    t3=$({ time $@; } 2>&1 |grep real|grep -oP "\d\.\d+")
+    t3=$({ time ./$cmd > output.txt; } 2>&1 |grep real|grep -oP "\d\.\d+")
     echo "Time 3: $t3"
-    python -c "print('Average time (3 samples): ' + str(($t1+$t2+$t3)/3.0) + ' s')"
+    sleep 1
+    echo "Average (3 samples): "`echo "scale=3; ($t1 + $t2 + $t3)/3.0"|bc`;
 }
