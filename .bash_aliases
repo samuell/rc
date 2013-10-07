@@ -77,6 +77,12 @@ cl() {
     pwd;
     ls;
 }
+cll() {
+    cd $1;
+    pwd
+    echo "--------------------------------------------------------------------------------";
+    ls -l;
+}
 alias ..='cll ..'
 alias ....='cll ../..'
 alias ......='cll ../../..'
@@ -95,7 +101,7 @@ alias kbus='setxkbmap us'
 alias kbse='setxkbmap se'
 alias eclipse4='/home/samuel/opt/eclipse/eclipse &'
 alias lo='sudo cpufreq-set -r -d 1.20GHz -u 1.20GHz'
-alias hi='sudo cpufreq-set -r -d 1.20GHz -u 2.20GHz'
+alias hi='sudo cpufreq-set -r -d 1.20GHz -u 2.60GHz'
 alias max='sudo cpufreq-set -r -d 2.20GHz -u 2.20GHz'
 alias ccinfo='sudo cpufreq-info 2>&1|grep current|less'
 time3() {
