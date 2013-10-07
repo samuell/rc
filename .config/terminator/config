@@ -12,6 +12,7 @@
     scrollbar_position = hidden
     foreground_color = "#ffffff"
     font = Monospace 9
+    allow_bold = False
 [layouts]
   [[default]]
     [[[child1]]]

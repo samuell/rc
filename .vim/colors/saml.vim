@@ -13,6 +13,7 @@ let g:colors_name = "saml"
 hi Normal		  guifg=white guibg=black
 hi Scrollbar	  guifg=darkgrey guibg=grey
 hi Menu			  guifg=white guibg=cyan
+hi Pmenu          guifg=white guibg=magenta ctermfg=White ctermbg=Magenta
 hi SpecialKey	  ctermfg=darkred  guifg=#cc0000
 hi NonText		  ctermfg=darkred  guifg=#cc0000
 hi Directory	  ctermfg=brown  guifg=#cc8000
