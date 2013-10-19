@@ -18,7 +18,7 @@ hi SpecialKey	  ctermfg=darkred  guifg=#cc0000
 hi NonText		  ctermfg=darkred  guifg=#cc0000
 hi Directory	  ctermfg=brown  guifg=#cc8000
 hi ErrorMsg		  term=standout    ctermfg=grey  ctermbg=red  guifg=White  guibg=Red
-hi Search		  term=reverse  ctermfg=white  ctermbg=red      guifg=white  guibg=Red
+hi Search		  term=reverse  ctermfg=white  ctermbg=yellow      guifg=white  guibg=Lightyellow
 hi MoreMsg		  ctermfg=darkgreen	  guifg=SeaGreen
 hi ModeMsg		    guifg=White	guibg=lightblue
 hi LineNr		  term=underline    ctermfg=grey	guifg=grey
