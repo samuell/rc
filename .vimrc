@@ -40,3 +40,7 @@ imap jj <Esc>
 noremap <silent> <C-Z>      :update<CR>
 vnoremap <silent> <C-Z>     :<C-C>:update<CR>
 inoremap <silent> <C-Z>     <C-[>:update<CR>  
+nmap <c-j> 4j
+nmap <c-k> 4k
+nmap <c-h> 4h
+nmap <c-l> 4l
