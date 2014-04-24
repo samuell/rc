@@ -8,6 +8,9 @@ set sw=4
 set autoindent
 set smartindent
 
+" Center marker while moving marker
+set so=999
+
 " Enable file type plugins
 filetype plugin on
 let g:pydiction_location='~/.vim/pydiction-1.2/complete-dict'
