@@ -1,18 +1,19 @@
 [global_config]
   title_receive_bg_color = "#c9a200"
   enabled_plugins = TerminalShot, LaunchpadCodeURLHandler, APTURLHandler, LaunchpadBugURLHandler
-  title_transmit_bg_color = "#336699"
+  title_transmit_bg_color = "#878787"
   handle_size = 1
+  title_inactive_bg_color = "#000000"
 [keybindings]
 [profiles]
   [[default]]
     scrollbar_position = hidden
-    palette = "#000000:#ff2727:#4e9a06:#c4a000:#3465a4:#75507b:#06989a:#d3d7cf:#555753:#ff7f7f:#8ae234:#fce94f:#729fcf:#ad7fa8:#34e2e2:#eeeeec"
+    palette = "#000000:#ff2727:#4e9a06:#c4a000:#34609a:#9c5ea5:#06989a:#d3d7cf:#555753:#ff7f7f:#8ae234:#fce94f:#70a7e2:#da84d1:#34e2e2:#efefef"
     background_darkness = 0.73
     scrollback_lines = 10000
     background_type = transparent
     use_system_font = False
-    foreground_color = "#ffffff"
+    foreground_color = "#dddddd"
     font = Monospace 9
     allow_bold = False
 [layouts]
