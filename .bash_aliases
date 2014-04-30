@@ -9,6 +9,7 @@ vs() {
 }
 alias ev='vim ~/.vimrc'
 alias ea='vs ~/.bash_aliases'
+alias eal='vs ~/.bash_aliases_local'
 alias eb='vs ~/.bashrc'
 alias ep='vs ~/.profile'
 
