@@ -23,7 +23,7 @@ hi MoreMsg		  ctermfg=darkgreen	  guifg=SeaGreen
 hi ModeMsg		    guifg=White	guibg=lightblue
 hi LineNr		  term=underline    ctermfg=grey	guifg=grey
 hi Question		  term=standout    ctermfg=darkgreen	  guifg=Green
-hi StatusLine	  ctermfg=lightblue ctermbg=white  guifg=blue guibg=white
+hi StatusLine	  ctermfg=darkgrey ctermbg=white  guifg=blue guibg=white
 hi StatusLineNC   term=reverse	ctermfg=white ctermbg=lightblue guifg=white guibg=blue
 hi Title		  ctermfg=magenta  	guifg=Magenta
 hi Visual		  term=reverse	cterm=reverse  gui=reverse
