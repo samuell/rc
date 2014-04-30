@@ -88,7 +88,7 @@ call vundle#rc()
 " Required! 
 Bundle 'gmarik/vundle'
 Bundle 'davidhalter/jedi-vim'
-Bundle 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
+" Bundle 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
 Bundle 'msanders/snipmate.vim'
 " --------------------------------------------
 

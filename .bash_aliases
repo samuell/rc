@@ -13,41 +13,39 @@ alias eal='vs ~/.bash_aliases_local'
 alias eb='vs ~/.bashrc'
 alias ep='vs ~/.profile'
 
-
 # --------------------------------------------------------------------------------
-# Listing commands
+# Various short-hand commands
 # --------------------------------------------------------------------------------
-alias ls='ls --color=auto -h'
-alias l='ls -l'
-alias ll='ls -l'
-
-
-# --------------------------------------------------------------------------------
-# Git commands
-# --------------------------------------------------------------------------------
+# Aptitude
+alias aptg='sudo apt-get install'
+alias aptr='sudo apt-get remove'
+alias apts='apt-cache search'
+alias aptu='sudo apt-get update'
+alias aptug='sudo apt-get upgrade'
+# Git
 alias glog='git log --pretty=oneline|tig'
 alias gdiff='git diff|tig'
 alias gcommit='git commit'
 alias gpush='git push'
 alias gpp='git pull --rebase origin master; git push origin master;'
 alias gadd='git add'
-
-
-# --------------------------------------------------------------------------------
-# Various short-hand commands
-# --------------------------------------------------------------------------------
-alias py='python'
-alias ipy='ipython'
-alias aptg='sudo apt-get install'
-alias aptr='sudo apt-get remove'
-alias apts='apt-cache search'
-alias aptu='sudo apt-get update'
-alias aptug='sudo apt-get upgrade'
 alias dus='{ for f in *; do du -sh $f; done; }|sort -h'
-alias s='less -S'
+# SSH
 alias sshpass='ssh -o PubkeyAuthentication=no'
 alias scppass='scp -o PubkeyAuthentication=no'
-
+# Screen
+alias sl='screen -ls'
+alias sms='screen -mS'
+alias sr='screen -r'
+alias sdr='screen -dr'
+# The ls command
+alias ls='ls --color=auto -h'
+alias l='ls -l'
+alias ll='ls -l'
+# Misc
+alias s='less -S'
+alias py='python'
+alias ipy='ipython'
 
 # --------------------------------------------------------------------------------
 # Directory browsing and handling
