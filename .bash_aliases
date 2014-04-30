@@ -153,5 +153,9 @@ time3() {
     sleep 1
     echo "Average (3 samples): "`echo "scale=3; ($t1 + $t2 + $t3)/3.0"|bc`;
 }
+install_vundle() {
+    git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/vundle
+    echo "Now open vim and execute: :PluginInstall !"
+}
 
 source ~/.bash_aliases_local
