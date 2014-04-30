@@ -1,0 +1,5 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhist_cnt =3
+let g:netrw_dirhist_1='/home/samuel/code/go/src/bioflow'
+let g:netrw_dirhist_2='/home/samuel'
+let g:netrw_dirhist_3='/home/samuel/code/go/src/basecompl_blow'
