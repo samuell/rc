@@ -5,7 +5,7 @@
 " Last Change:	2006 Dec 10
 
 hi clear
-set background=light
+set background=dark
 if exists("syntax_on")
   syntax reset
 endif

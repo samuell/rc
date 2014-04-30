@@ -4,10 +4,11 @@
 # Edit dotfiles
 # --------------------------------------------------------------------------------
 vs() {
-    vim +1000 $1;
+    vim $1;
     source $1;
 }
 alias ev='vim ~/.vimrc'
+alias evc='vim ~/.vim/colors/saml.vim'
 alias ea='vs ~/.bash_aliases'
 alias eal='vs ~/.bash_aliases_local'
 alias eb='vs ~/.bashrc'
@@ -155,5 +156,13 @@ install_vundle() {
     git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/vundle
     echo "Now open vim and execute: :PluginInstall !"
 }
-
+bookmark() {
+    name=$1;
+    dir=$(pwd);
+    echo "alias c$name='c $dir'" >> ~/.bash_aliases_local
+    source ~/.bash_aliases_local
+}
+bookmarks() {
+    cat ~/.bash_aliases_local | grep "alias c"
+}
 source ~/.bash_aliases_local
