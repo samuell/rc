@@ -18,6 +18,7 @@ set sw=4
 set autoindent
 set smartindent
 set so=999
+set nowrap
 " --------------------------------------------
 
 
