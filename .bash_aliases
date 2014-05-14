@@ -10,6 +10,7 @@ vs() {
 alias ev='vim ~/.vimrc'
 alias evc='vim ~/.vim/colors/saml.vim'
 alias ea='vs ~/.bash_aliases'
+alias ez='vs ~/.zshrc'
 alias eal='vs ~/.bash_aliases_local'
 alias eb='vs ~/.bashrc'
 alias ep='vs ~/.profile'
@@ -23,6 +24,7 @@ alias aptr='sudo apt-get remove'
 alias apts='apt-cache search'
 alias aptu='sudo apt-get update'
 alias aptug='sudo apt-get upgrade'
+alias ubuntu_version='lsb_release -a'
 # Git
 alias glog='git log --pretty=oneline|tig'
 alias gdiff='git diff|tig'
@@ -39,6 +41,9 @@ alias sl='screen -ls'
 alias sms='screen -mS'
 alias sr='screen -r'
 alias sdr='screen -dr'
+ks() {
+    screen -X -S $1 quit
+}
 # The ls command
 alias ls='ls --color=auto -h'
 alias l='ls -l'
@@ -47,6 +52,7 @@ alias ll='ls -l'
 alias s='less -S'
 alias py='python'
 alias ipy='ipython'
+alias R='R --no-save'
 
 # --------------------------------------------------------------------------------
 # Directory browsing and handling
@@ -86,7 +92,7 @@ alias pscpu10='ps auxf | sort -nr -k 3 | head -10'
 alias cpuinfo='lscpu'
 # Directory sizes
 alias dirsizes='{ for f in `find -maxdepth 1 -type d`; do du -sh $f; done; }|sort -h'
-
+alias logmemusage='sar -r 1'
 
 # --------------------------------------------------------------------------------
 # Switch keyboard layout
@@ -166,3 +172,5 @@ bookmarks() {
     cat ~/.bash_aliases_local | grep "alias c"
 }
 source ~/.bash_aliases_local
+alias installflash='sudo apt-get install pepperflashplugin-nonfree'
+alias updateflash='sudo update-pepperflashplugin-nonfree --install'
