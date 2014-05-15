@@ -8,7 +8,7 @@ vs() {
     source $1;
 }
 alias ev='vim ~/.vimrc'
-alias evc='vim ~/.vim/colors/saml.vim'
+alias evc='vim ~/.vim/colors/samllight.vim'
 alias ea='vs ~/.bash_aliases'
 alias ez='vs ~/.zshrc'
 alias eal='vs ~/.bash_aliases_local'
