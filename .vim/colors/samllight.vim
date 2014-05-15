@@ -32,7 +32,7 @@ hi Cursor		  guifg=bg	guibg=Green
 hi Comment		  ctermfg=darkcyan guifg=#337733
 hi Constant		  ctermfg=blue  guifg=#0000ff
 hi Special		  ctermfg=darkyellow  guifg=Orange
-hi Identifier	  ctermfg=white guifg=white
+hi Identifier	  ctermfg=blue guifg=white
 hi Statement	  ctermfg=lightblue guifg=#0000ff
 hi PreProc		  term=underline  ctermfg=blue guifg=#000099
 hi Type			  term=underline   ctermfg=blue    guifg=#000099
