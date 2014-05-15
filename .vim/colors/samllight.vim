@@ -10,10 +10,10 @@ if exists("syntax_on")
   syntax reset
 endif
 let g:colors_name = "saml"
-hi Normal		  guifg=white guibg=black
+hi Normal		  guifg=white guibg=black ctermfg=darkgrey
 hi Scrollbar	  guifg=darkgrey guibg=grey
-hi Menu			  guifg=white guibg=cyan
-hi Pmenu          guifg=white guibg=magenta ctermfg=White ctermbg=Magenta
+hi Menu			  guifg=white guibg=cyan ctermfg=white ctermbg=lightmagenta
+hi Pmenu          guifg=white guibg=magenta ctermfg=White ctermbg=lightmagenta
 hi SpecialKey	  ctermfg=darkred  guifg=#cc0000
 hi NonText		  ctermfg=darkred  guifg=#cc0000
 hi Directory	  ctermfg=brown  guifg=#cc8000

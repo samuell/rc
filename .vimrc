@@ -9,7 +9,7 @@ set laststatus=2
 " My own configs ... mostly python stuff
 " --------------------------------------------
 syntax on
-colorscheme saml
+colorscheme samllight
 set showmatch
 set ignorecase
 set showmode
