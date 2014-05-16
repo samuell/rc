@@ -53,6 +53,15 @@ alias s='less -S'
 alias py='python'
 alias ipy='ipython'
 alias R='R --no-save'
+padold() {
+    mv $1{,.old}
+}
+padtmp() {
+    mv $1{,.tmp}
+}
+pad() {
+    mv $1{,.$2}
+}
 
 # --------------------------------------------------------------------------------
 # Directory browsing and handling
