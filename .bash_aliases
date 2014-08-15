@@ -6,6 +6,7 @@
 vs() {
     vim $1;
     source $1;
+	source ~/.zshrc;
 }
 alias ev='vim ~/.vimrc'
 alias evc='vim ~/.vim/colors/samllight.vim'
