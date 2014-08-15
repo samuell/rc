@@ -207,3 +207,20 @@ function lf() {
     ls -1tr | tail -n 1;
 }
 alias cutt='cut -c -$COLUMNS'
+ogvtoavi_mjpeg() {
+    infile=$1
+    outfile=$1"_mjpeg.avi"
+    avconv -i "$infile" -vcodec mjpeg -acodec mp2 "$outfile"
+}
+ogvtoavi_h264() {
+    infile=$1
+    outfile=$1"_h264.avi"
+    avconv -i "$infile" -vcodec h264 -acodec mp2 "$outfile"
+}
+extractaudio() {
+    infile=$1
+    avconv -i "$infile" "$infile.wav"
+}
+function lf() {
+    ls -1tr | tail -n 1;
+}
