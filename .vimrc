@@ -17,7 +17,7 @@ set ts=4
 set sw=4
 set autoindent
 set smartindent
-set so=999
+set so=12
 set nowrap
 " --------------------------------------------
 
