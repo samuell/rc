@@ -19,6 +19,7 @@ set autoindent
 set smartindent
 set so=999
 set nowrap
+autocmd Filetype php setlocal ts=4 sw=4 noexpandtab
 " --------------------------------------------
 
 
@@ -29,7 +30,7 @@ filetype plugin on
 let g:pydiction_location='~/.vim/pydiction-1.2/complete-dict'
 
 set number
-set expandtab
+autocmd FileType python set expandtab
 autocmd FileType python runtime! autoload/pythoncomplete.vim
 imap <c-space> <c-x><c-o>
 :set backspace=2
