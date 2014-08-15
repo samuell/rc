@@ -33,7 +33,8 @@ alias gcommit='git commit'
 alias gpush='git push'
 alias gpp='git pull --rebase origin master; git push origin master;'
 alias gadd='git add'
-alias dus='{ for f in *; do du -sh $f; done; }|sort -h'
+alias gb='git branch -av'
+alias dus='{ for f in *; do du -sh "$f"; done; }|sort -h'
 # SSH
 alias sshpass='ssh -o PubkeyAuthentication=no'
 alias scppass='scp -o PubkeyAuthentication=no'
@@ -68,7 +69,7 @@ pad() {
 # Directory browsing and handling
 # --------------------------------------------------------------------------------
 c() {
-    cd $1;
+    cd "$1";
     ls -l;
     echo " ";
     pwd;
