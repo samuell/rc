@@ -17,7 +17,7 @@ set ts=4
 set sw=4
 set autoindent
 set smartindent
-set so=999
+set so=12
 set nowrap
 autocmd Filetype php setlocal ts=4 sw=4 noexpandtab
 " --------------------------------------------

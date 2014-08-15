@@ -48,8 +48,12 @@ ks() {
 }
 # The ls command
 alias ls='ls --color=auto -h'
-alias l='ls -l'
-alias ll='ls -l'
+alias l='ls -1'
+alias ltr='ls -1tr'
+alias lltr='ls -ltr'
+alias last='tail -n 1'
+alias llast='ls -1tr | last'
+alias slast='llast | xargs less -S'
 # Misc
 alias s='less -S'
 alias py='python'
@@ -74,9 +78,9 @@ c() {
     echo " ";
     pwd;
 }
-alias ..='c ..'
-alias ....='c ../..'
-alias ......='c ../../..'
+alias ..='cd ..'
+alias ....='cd ../..'
+alias ......='cd ../../..'
 mkcd() {
     mkdir -p $1;
     cd $1;
@@ -202,3 +206,4 @@ extractaudio() {
 function lf() {
     ls -1tr | tail -n 1;
 }
+alias cutt='cut -c -$COLUMNS'
