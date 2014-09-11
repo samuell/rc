@@ -14,11 +14,16 @@ alias ea='vs ~/.bash_aliases'
 alias ez='vs ~/.zshrc'
 alias eal='vs ~/.bash_aliases_local'
 alias eb='vs ~/.bashrc'
+alias ebl='vs ~/.bashrc_local'
 alias ep='vs ~/.profile'
 
 # --------------------------------------------------------------------------------
 # Various short-hand commands
 # --------------------------------------------------------------------------------
+# Text editing
+alias e='vim'
+alias v='vim'
+alias n='nano'
 # Aptitude
 alias aptg='sudo apt-get install'
 alias aptr='sudo apt-get remove'
@@ -49,8 +54,11 @@ ks() {
 # The ls command
 alias ls='ls --color=auto -h'
 alias l='ls -1'
+alias la='ls -1a'
 alias ltr='ls -1tr'
+alias ltra='ls -1tra'
 alias lltr='ls -ltr'
+alias lltra='ls -ltra'
 alias last='tail -n 1'
 alias llast='ls -1tr | last'
 alias slast='llast | xargs less -S'
@@ -74,7 +82,7 @@ pad() {
 # --------------------------------------------------------------------------------
 c() {
     cd "$1";
-    ls -l;
+    ls -1tra | tail -n 25;
     echo " ";
     pwd;
 }
