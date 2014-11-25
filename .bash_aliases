@@ -6,6 +6,7 @@
 vs() {
     vim $1;
     source $1;
+	source ~/.zshrc;
 }
 alias ev='vim ~/.vimrc'
 alias evc='vim ~/.vim/colors/samllight.vim'
@@ -19,6 +20,10 @@ alias ep='vs ~/.profile'
 # --------------------------------------------------------------------------------
 # Various short-hand commands
 # --------------------------------------------------------------------------------
+# Text editing
+alias e='vim'
+alias v='vim'
+alias n='nano'
 # Aptitude
 alias aptg='sudo apt-get install'
 alias aptr='sudo apt-get remove'
@@ -33,7 +38,8 @@ alias gcommit='git commit'
 alias gpush='git push'
 alias gpp='git pull --rebase origin master; git push origin master;'
 alias gadd='git add'
-alias dus='{ for f in *; do du -sh $f; done; }|sort -h'
+alias gb='git branch -av'
+alias dus='{ for f in *; do du -sh "$f"; done; }|sort -h'
 # SSH
 alias sshpass='ssh -o PubkeyAuthentication=no'
 alias scppass='scp -o PubkeyAuthentication=no'
@@ -48,8 +54,11 @@ ks() {
 # The ls command
 alias ls='ls --color=auto -h'
 alias l='ls -1'
+alias la='ls -1a'
 alias ltr='ls -1tr'
+alias ltra='ls -1tra'
 alias lltr='ls -ltr'
+alias lltra='ls -ltra'
 alias last='tail -n 1'
 alias llast='ls -1tr | last'
 alias slast='llast | xargs less -iS'
@@ -73,8 +82,8 @@ pad() {
 # Directory browsing and handling
 # --------------------------------------------------------------------------------
 c() {
-    cd $1;
-    ls -l;
+    cd "$1";
+    ls -1tra | tail -n 25;
     echo " ";
     pwd;
 }
@@ -189,9 +198,42 @@ bookmarks() {
 source ~/.bash_aliases_local
 alias installflash='sudo apt-get install pepperflashplugin-nonfree'
 alias updateflash='sudo update-pepperflashplugin-nonfree --install'
+ogvtoavi_mjpeg() {
+    infile=$1
+    outfile=$1"_mjpeg.avi"
+    avconv -i "$infile" -vcodec mjpeg -acodec mp2 "$outfile"
+}
+ogvtoavi_h264() {
+    infile=$1
+    outfile=$1"_h264.avi"
+    avconv -i "$infile" -vcodec h264 -acodec mp2 "$outfile"
+}
+extractaudio() {
+    infile=$1
+    avconv -i "$infile" "$infile.wav"
+}
+function lf() {
+    ls -1tr | tail -n 1;
+}
 alias cutt='cut -c -$COLUMNS'
 div() { 
     echo "=========================================================================="
     echo " $1"
     echo "=========================================================================="
+ogvtoavi_mjpeg() {
+    infile=$1
+    outfile=$1"_mjpeg.avi"
+    avconv -i "$infile" -vcodec mjpeg -acodec mp2 "$outfile"
+}
+ogvtoavi_h264() {
+    infile=$1
+    outfile=$1"_h264.avi"
+    avconv -i "$infile" -vcodec h264 -acodec mp2 "$outfile"
+}
+extractaudio() {
+    infile=$1
+    avconv -i "$infile" "$infile.wav"
+}
+function lf() {
+    ls -1tr | tail -n 1;
 }

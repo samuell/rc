@@ -19,6 +19,7 @@ set autoindent
 set smartindent
 set so=12
 set nowrap
+autocmd Filetype php setlocal ts=4 sw=4 noexpandtab
 " --------------------------------------------
 
 
@@ -27,22 +28,26 @@ set nowrap
 " --------------------------------------------
 filetype plugin on
 let g:pydiction_location='~/.vim/pydiction-1.2/complete-dict'
-
+"
 set number
-set expandtab
+autocmd FileType python set expandtab
 autocmd FileType python runtime! autoload/pythoncomplete.vim
 imap <c-space> <c-x><c-o>
 :set backspace=2
 " from /home/samuel/go/misc/vim/readme.txt
 " Some Linux distributions set filetype in /etc/vimrc. 
 " Clear filetype flags before changing runtimepath to force Vim to reload them. 
-filetype off 
-filetype plugin indent off 
-set runtimepath+=$GOROOT/misc/vim 
+if exists("g:did_load_filetypes")
+	filetype off
+	filetype plugin indent off
+endif
+set runtimepath+=$GOROOT/misc/vim/
 filetype plugin indent on 
 filetype plugin on
+
 if has("autocmd")
-    autocmd FileType python set complete+=k/home/samuel/.vim/pydiction-1.2/pydiction isk+=.,(
+	autocmd FileType python set complete+=k/home/samuel/.vim/pydiction-1.2/pydiction isk+=.,(
+	autocmd FileType go autocmd BufWritePre <buffer> Fmt
 endif " has("autocmd")
 
 filetype plugin on
@@ -65,31 +70,10 @@ inoremap <silent> <C-Z>     <C-[>:update<CR>
 
 " --------------------------------------------
 " Speed up navigation 4x by holding Ctrl key
-"nmap <s-j> 2j
-"nmap <s-k> 2k
-"nmap <s-h> 2h
-"nmap <s-l> 2l
 nmap <c-j> 4j
 nmap <c-k> 4k
 nmap <c-h> 4h
 nmap <c-l> 4l
 " --------------------------------------------
 
-
-" --------------------------------------------
-" Vundle bundle manager set up
-" --------------------------------------------
-set nocompatible              " be iMproved
-filetype off                  " required!
-
-set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
-
-" Let Vundle manage Vundle
-" Required! 
-Bundle 'gmarik/vundle'
-Bundle 'davidhalter/jedi-vim'
-" Bundle 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
-Bundle 'msanders/snipmate.vim'
-" --------------------------------------------
-
+source .vimrc_vundle
