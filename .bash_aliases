@@ -190,3 +190,8 @@ source ~/.bash_aliases_local
 alias installflash='sudo apt-get install pepperflashplugin-nonfree'
 alias updateflash='sudo update-pepperflashplugin-nonfree --install'
 alias cutt='cut -c -$COLUMNS'
+div() { 
+    echo "=========================================================================="
+    echo " $1"
+    echo "=========================================================================="
+}
