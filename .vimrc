@@ -20,6 +20,7 @@ set smartindent
 set so=12
 set nowrap
 autocmd Filetype php setlocal ts=4 sw=4 noexpandtab
+set shell=/bin/sh " Needed to get at least Go autocompletion to work
 " --------------------------------------------
 
 
@@ -76,4 +77,4 @@ nmap <c-h> 4h
 nmap <c-l> 4l
 " --------------------------------------------
 
-source .vimrc_vundle
+" source .vimrc_vundle
