@@ -64,9 +64,10 @@ alias lltr='ls -ltr'
 alias lltra='ls -ltra'
 alias last='tail -n 1'
 alias llast='ls -1tr | last'
-alias slast='llast | xargs less -S'
+alias slast='llast | xargs less -iS'
+alias lslast='llast | xargs less -i'
 # Misc
-alias s='less -S'
+alias s='less -iS'
 alias py='python'
 alias p='python'
 alias pm='python manage.py'
@@ -226,6 +227,10 @@ function lf() {
     ls -1tr | tail -n 1;
 }
 alias cutt='cut -c -$COLUMNS'
+div() { 
+    echo "=========================================================================="
+    echo " $1"
+    echo "=========================================================================="
 ogvtoavi_mjpeg() {
     infile=$1
     outfile=$1"_mjpeg.avi"
