@@ -1,17 +1,19 @@
 #!/bin/bash
 
 # --------------------------------------------------------------------------------
+# Shortcut bindings
+# --------------------------------------------------------------------------------
+#bind -x '"\C-t":htop'
+# --------------------------------------------------------------------------------
 # Edit dotfiles
 # --------------------------------------------------------------------------------
 vs() {
     vim $1;
     source $1;
-	source ~/.zshrc;
 }
 alias ev='vim ~/.vimrc'
 alias evc='vim ~/.vim/colors/samllight.vim'
 alias ea='vs ~/.bash_aliases'
-alias ez='vs ~/.zshrc'
 alias eal='vs ~/.bash_aliases_local'
 alias eb='vs ~/.bashrc'
 alias ebl='vs ~/.bashrc_local'
@@ -39,7 +41,8 @@ alias gpush='git push'
 alias gpp='git pull --rebase origin master; git push origin master;'
 alias gadd='git add'
 alias gb='git branch -av'
-alias dus='{ for f in *; do du -sh "$f"; done; }|sort -h'
+alias dus='{ for f in *; do du -sh "$f"; done } | sort -h'
+alias dusa='sudo du -sh .* | sort -h'
 # SSH
 alias sshpass='ssh -o PubkeyAuthentication=no'
 alias scppass='scp -o PubkeyAuthentication=no'
@@ -65,7 +68,15 @@ alias slast='llast | xargs less -S'
 # Misc
 alias s='less -S'
 alias py='python'
+alias p='python'
+alias pm='python manage.py'
 alias ipy='ipython'
+psa() {
+	term=$1;
+	echo "Now showing processes including $term in name ...";
+	/bin/ps aux | grep "$term";
+}
+alias k='kill -9'
 alias R='R --no-save'
 padold() {
     mv $1{,.old}
@@ -82,7 +93,7 @@ pad() {
 # --------------------------------------------------------------------------------
 c() {
     cd "$1";
-    ls -1tra | tail -n 25;
+    ls -ltra --color=always | tail -n 25;
     echo " ";
     pwd;
 }
@@ -122,7 +133,7 @@ alias logmemusage='sar -r 1'
 # --------------------------------------------------------------------------------
 alias kb='setxkbmap'
 alias se='setxkbmap se'
-function us() {
+us() {
     echo "Setting keyboard map to US";
     setxkbmap 'us';
     xmodmap -e 'keycode 108 = Mode_switch';
@@ -225,10 +236,78 @@ ogvtoavi_h264() {
     outfile=$1"_h264.avi"
     avconv -i "$infile" -vcodec h264 -acodec mp2 "$outfile"
 }
-extractaudio() {
+extractogvaudio() {
     infile=$1
-    avconv -i "$infile" "$infile.wav"
+    avconv -i "$infile" -vn -c:a copy "$infile.ogg"
 }
 function lf() {
     ls -1tr | tail -n 1;
+}
+alias now='date +%Y%m%d_%H%M%S';
+function swap_audio_of_video() {
+    if [[ ! -z "$1" && ! -z "$2" && ! -z "$3" ]]; then
+		videofile=$1;
+		audiofile=$2;
+		outfile=$3;
+		avconv -i $videofile -i $audiofile -c:v copy -c:a copy -map 0:1 -map 1:0 $outfile;
+	else
+		echo "Usage: <input-video> <input-audio> <output-video>"
+	fi;
+}
+ogv_to_mp4() {
+	avconv -i $1 \
+	 -c:v libx264 -preset veryslow -qp 0 \
+	 -vf scale="720:trunc(ow/a/2)*2" \
+	 -c:a libmp3lame -qscale:a 3 -af 'volume=1.5' -ac 2 \
+	 $1.mp4
+}
+alias d='sudo docker'
+alias docker='sudo docker'
+p12_to_pem() {
+	openssl pkcs12 -in $1 -out $1'.crt.pem' -clcerts -nokeys
+	openssl pkcs12 -in $1 -out $1'.key.pem' -nocerts -nodes
+}
+dh() {
+cat <<EOM
+General commands:
+    events    Get real time events from the server
+    info      Display system-wide information
+    login     Register or Login to the docker registry server
+    version   Show the docker version information
+
+Commands for working with images:
+    build     Build an image from a Dockerfile
+    history   Show the history of an image
+    images    List images
+    import    Create a new filesystem image from the contents of a tarball
+    load      Load an image from a tar archive
+    pull      Pull an image or a repository from the docker registry server
+    push      Push an image or a repository to the docker registry server
+    rmi       Remove one or more images
+    save      Save an image to a tar archive
+    search    Search for an image in the docker index
+    tag       Tag an image into a repository
+
+Commands for working with containers (instances of images):
+    attach    Attach to a running container
+    commit    Create a new image from a container's changes
+    diff      Inspect changes on a container's filesystem
+    cp        Copy files/folders from the containers filesystem to the host path
+    export    Stream the contents of a container as a tar archive
+    inspect   Return low-level information on a container
+    kill      Kill a running container
+    logs      Fetch the logs of a container
+    port      Lookup the public-facing port which is NAT-ed to PRIVATE_PORT
+    pause     Pause all processes within a container
+    ps        List containers
+    ps -a     List all containers (including stopped ones)
+    restart   Restart a running container
+    rm        Remove one or more containers
+    run       Run a command in a new container
+    start     Start a stopped container
+    stop      Stop a running container
+    top       Lookup the running processes of a container
+    unpause   Unpause a paused container
+    wait      Block until a container stops, then print its exit code
+EOM
 }
