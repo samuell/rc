@@ -58,8 +58,8 @@ ks() {
 # tmux
 alias tn='tmux new'
 alias tns='tmux new -s'
-alias ta='tmux attach -t'
-alias tas='tmux attach'
+alias ta='tmux attach'
+alias tas='tmux attach -t'
 alias ts='tmux switch'
 alias tss='tmux switch -s'
 alias tl='tmux list-sessions'
