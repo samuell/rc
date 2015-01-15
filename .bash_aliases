@@ -56,9 +56,12 @@ ks() {
     screen -X -S $1 quit
 }
 # tmux
-alias tn='tmux new -s'
+alias tn='tmux new'
+alias tns='tmux new -s'
 alias ta='tmux attach -t'
-alias ts='tmux switch -s'
+alias tas='tmux attach'
+alias ts='tmux switch'
+alias tss='tmux switch -s'
 alias tl='tmux list-sessions'
 # The ls command
 alias ls='ls --color=auto -h'
