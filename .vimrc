@@ -1,4 +1,6 @@
-" --------------------------------------------
+let mapleader=','
+
+" -------------------------------------------- 
 " Powerline config
 " --------------------------------------------
 set guifont=DejaVu\ Sans\ Mono\ for\ Powerline\ 9
@@ -14,8 +16,7 @@ set showmatch
 set ignorecase
 set showmode
 set ts=4
-set sw=4
-set autoindent
+set sw=4 autoindent
 set smartindent
 set so=12
 set nowrap
@@ -77,4 +78,14 @@ nmap <c-h> 4h
 nmap <c-l> 4l
 " --------------------------------------------
 
-" source .vimrc_vundle
+" --------------------------------------------
+" Distraction free editing in vim
+let g:goyo_width = 80 
+let g:goyo_margin_top = 0 
+let g:goyo_margin_bottom = 0
+let g:goyo_linenr = 0
+" --------------------------------------------
+autocmd User GoyoEnter Limelight
+autocmd User GoyoLeave Limelight!
+
+source ~/.vimrc_vundle

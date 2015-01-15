@@ -12,6 +12,7 @@ vs() {
     source $1;
 }
 alias ev='vim ~/.vimrc'
+alias ei='vim ~/.irods/.irodsEnv'
 alias evc='vim ~/.vim/colors/samllight.vim'
 alias ea='vs ~/.bash_aliases'
 alias eal='vs ~/.bash_aliases_local'
@@ -41,8 +42,8 @@ alias gpush='git push'
 alias gpp='git pull --rebase origin master; git push origin master;'
 alias gadd='git add'
 alias gb='git branch -av'
-alias dus='{ for f in *; do du -sh "$f"; done } | sort -h'
-alias dusa='sudo du -sh .* | sort -h'
+alias dus='du -sh * | sort -h'
+alias dusa='du -ash .* | sort -h'
 # SSH
 alias sshpass='ssh -o PubkeyAuthentication=no'
 alias scppass='scp -o PubkeyAuthentication=no'
@@ -54,6 +55,11 @@ alias sdr='screen -dr'
 ks() {
     screen -X -S $1 quit
 }
+# tmux
+alias tn='tmux new -s'
+alias ta='tmux attach -t'
+alias ts='tmux switch -s'
+alias tl='tmux list-sessions'
 # The ls command
 alias ls='ls --color=auto -h'
 alias l='ls -1'
@@ -67,7 +73,7 @@ alias llast='ls -1tr | last'
 alias slast='llast | xargs less -iS'
 alias lslast='llast | xargs less -i'
 # Misc
-alias s='less -iS'
+alias s='less -S'
 alias py='python'
 alias p='python'
 alias pm='python manage.py'
@@ -231,6 +237,7 @@ div() {
     echo "=========================================================================="
     echo " $1"
     echo "=========================================================================="
+}
 ogvtoavi_mjpeg() {
     infile=$1
     outfile=$1"_mjpeg.avi"
@@ -316,3 +323,4 @@ Commands for working with containers (instances of images):
     wait      Block until a container stops, then print its exit code
 EOM
 }
+
