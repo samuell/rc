@@ -19,6 +19,7 @@ alias eal='vs ~/.bash_aliases_local'
 alias eb='vs ~/.bashrc'
 alias ebl='vs ~/.bashrc_local'
 alias ep='vs ~/.profile'
+alias et='vim ~/.tmux.conf'
 
 # --------------------------------------------------------------------------------
 # Various short-hand commands
@@ -97,6 +98,16 @@ padtmp() {
 pad() {
     mv $1{,.$2}
 }
+padrem() {
+    mv $1{.$2,}
+}
+alias vg='vagrant'
+alias vgu='vagrant up'
+alias vgp='vagrant provision'
+alias vgs='vagrant ssh'
+alias vgd='vagrant destroy'
+alias sm='snakemake'
+
 
 # --------------------------------------------------------------------------------
 # Directory browsing and handling
