@@ -1,6 +1,7 @@
 export PATH=~/bin:$PATH
 export PATH=~/scripts:$PATH
 export PATH=~/opt/bpipe/bin:$PATH
+export PATH=~/opt/liteide/bin:$PATH
 
 HISTFILESIZE=10000
 
@@ -15,3 +16,9 @@ export GOROOT=~/opt/go
 export GOPATH=~/code/go
 export PATH=~/opt/go/bin:$PATH
 export PATH=~/go/bin:$PATH
+
+# PyEnv
+export PYENV_ROOT="$HOME/.pyenv"
+export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init -)"
+export PS1="[\u \W]$ "
