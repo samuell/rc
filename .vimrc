@@ -1,6 +1,6 @@
 let mapleader=','
 
-" -------------------------------------------- 
+" --------------------------------------------
 " Powerline config
 " --------------------------------------------
 set guifont=DejaVu\ Sans\ Mono\ for\ Powerline\ 9
@@ -37,14 +37,14 @@ autocmd FileType python runtime! autoload/pythoncomplete.vim
 imap <c-space> <c-x><c-o>
 :set backspace=2
 " from /home/samuel/go/misc/vim/readme.txt
-" Some Linux distributions set filetype in /etc/vimrc. 
-" Clear filetype flags before changing runtimepath to force Vim to reload them. 
+" Some Linux distributions set filetype in /etc/vimrc.
+" Clear filetype flags before changing runtimepath to force Vim to reload them.
 if exists("g:did_load_filetypes")
 	filetype off
 	filetype plugin indent off
 endif
 set runtimepath+=$GOROOT/misc/vim/
-filetype plugin indent on 
+filetype plugin indent on
 filetype plugin on
 
 if has("autocmd")
@@ -66,7 +66,7 @@ imap jj <Esc>
 " remap Ctrl + Z to save, in all modes
 noremap <silent> <C-Z>      :update<CR>
 vnoremap <silent> <C-Z>     :<C-C>:update<CR>
-inoremap <silent> <C-Z>     <C-[>:update<CR>  
+inoremap <silent> <C-Z>     <C-[>:update<CR>
 " --------------------------------------------
 
 
@@ -80,12 +80,15 @@ nmap <c-l> 4l
 
 " --------------------------------------------
 " Distraction free editing in vim
-let g:goyo_width = 80 
-let g:goyo_margin_top = 0 
+let g:goyo_width = 80
+let g:goyo_margin_top = 0
 let g:goyo_margin_bottom = 0
 let g:goyo_linenr = 0
 " --------------------------------------------
 autocmd User GoyoEnter Limelight
 autocmd User GoyoLeave Limelight!
+"
+let g:ycm_min_num_of_chars_for_completion = 2
+let g:ycm_auto_trigger = 2
 
 source ~/.vimrc_vundle
