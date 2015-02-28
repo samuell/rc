@@ -9,7 +9,7 @@
 # --------------------------------------------------------------------------------
 vs() {
     vim $1;
-    source $1;
+    . $1;
 }
 alias ev='vim ~/.vimrc'
 alias ei='vim ~/.irods/.irodsEnv'
@@ -222,10 +222,14 @@ install_vundle() {
     echo "Now open vim and execute: :PluginInstall !"
 }
 bookmark() {
-    name=$1;
-    dir=$(pwd);
-    echo "alias c$name='c $dir'" >> ~/.bash_aliases_local
-    source ~/.bash_aliases_local
+	if [[ ! $1 ]]; then
+		echo "Usage: bookmark BOOKMARKNAME";
+	else
+		name=$1;
+		dir=$(basename $(pwd));
+		echo "alias c$name='c $dir'" >> ~/.bash_aliases_local
+		source ~/.bash_aliases_local
+	fi
 }
 bookmarks() {
     cat ~/.bash_aliases_local | grep "alias c"
