@@ -17,6 +17,7 @@ alias evc='vim ~/.vim/colors/samllight.vim'
 alias ea='vs ~/.bash_aliases'
 alias eal='vs ~/.bash_aliases_local'
 alias eb='vs ~/.bashrc'
+alias ebm='vs ~/.bashrc_mods'
 alias ebl='vs ~/.bashrc_local'
 alias ep='vs ~/.profile'
 alias et='vim ~/.tmux.conf'
@@ -107,6 +108,9 @@ alias vgp='vagrant provision'
 alias vgs='vagrant ssh'
 alias vgd='vagrant destroy'
 alias sm='snakemake'
+function gitsshify() {
+	echo 'git@github.com:'$1'.git';
+}
 
 
 # --------------------------------------------------------------------------------
