@@ -91,4 +91,4 @@ autocmd User GoyoLeave Limelight!
 let g:ycm_min_num_of_chars_for_completion = 2
 let g:ycm_auto_trigger = 2
 
-source ~/.vimrc_vundle
+"source ~/.vimrc_vundle
