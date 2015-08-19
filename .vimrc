@@ -76,21 +76,6 @@ nmap <c-h> 4h
 nmap <c-l> 4l
 " --------------------------------------------
 
-" --------------------------------------------
-" Distraction free editing in vim
-let g:goyo_width = 80
-let g:goyo_margin_top = 0
-let g:goyo_margin_bottom = 0
-let g:goyo_linenr = 0
-" --------------------------------------------
-autocmd User GoyoEnter Limelight
-autocmd User GoyoLeave Limelight!
-"
-let g:ycm_min_num_of_chars_for_completion = 2
-let g:ycm_auto_trigger = 2
-
-"source ~/.vimrc_vundle
-
 execute pathogen#infect()
 syntax on
 filetype plugin indent on
