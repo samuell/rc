@@ -44,6 +44,7 @@ alias gpush='git push'
 alias gpp='git pull --rebase origin master; git push origin master;'
 alias gadd='git add'
 alias gb='git branch -av'
+alias gd='git diff | tig'
 alias dus='du -sh * | sort -h'
 alias dusa='du -ash .* | sort -h'
 # SSH
@@ -71,8 +72,10 @@ alias l='ls -1'
 alias la='ls -1a'
 alias ltr='ls -1tr'
 alias ltra='ls -1tra'
+alias ltrad='ls -1trad'
 alias lltr='ls -ltr'
 alias lltra='ls -ltra'
+alias lltrad='ls -ltrad'
 alias last='tail -n 1'
 alias llast='ls -1tr | last'
 alias slast='llast | xargs less -iS'
@@ -106,6 +109,8 @@ alias vg='vagrant'
 alias vgu='vagrant up'
 alias vgp='vagrant provision'
 alias vgs='vagrant ssh'
+alias vgst='vagrant status'
+alias vgh='vagrant halt'
 alias vgd='vagrant destroy'
 alias sm='snakemake'
 function gitsshify() {
@@ -295,8 +300,6 @@ ogv_to_mp4() {
 	 -c:a libmp3lame -qscale:a 3 -af 'volume=1.5' -ac 2 \
 	 $1.mp4
 }
-alias d='sudo docker'
-alias docker='sudo docker'
 p12_to_pem() {
 	openssl pkcs12 -in $1 -out $1'.crt.pem' -clcerts -nokeys
 	openssl pkcs12 -in $1 -out $1'.key.pem' -nocerts -nodes
