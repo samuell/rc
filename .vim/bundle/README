@@ -1,0 +1,2 @@
+Put vim plugins here!
+(They are activated in the main .vimrc by running pathogen#infect())
