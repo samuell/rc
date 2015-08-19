@@ -6,7 +6,6 @@ let mapleader=','
 set guifont=DejaVu\ Sans\ Mono\ for\ Powerline\ 9
 set laststatus=2
 
-
 " --------------------------------------------
 " My own configs ... mostly python stuff
 " --------------------------------------------
@@ -68,7 +67,6 @@ noremap <silent> <C-Z>      :update<CR>
 vnoremap <silent> <C-Z>     :<C-C>:update<CR>
 inoremap <silent> <C-Z>     <C-[>:update<CR>
 " --------------------------------------------
-
 
 " --------------------------------------------
 " Speed up navigation 4x by holding Ctrl key
