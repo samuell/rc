@@ -31,7 +31,7 @@ set shell=/bin/sh " Needed to get at least Go autocompletion to work
 filetype plugin on
 let g:pydiction_location='~/.vim/pydiction-1.2/complete-dict'
 "
-set number
+"set number
 autocmd FileType python set expandtab
 autocmd FileType python runtime! autoload/pythoncomplete.vim
 imap <c-space> <c-x><c-o>
