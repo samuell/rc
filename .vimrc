@@ -49,7 +49,7 @@ filetype plugin on
 
 if has("autocmd")
 	autocmd FileType python set complete+=k/home/samuel/.vim/pydiction-1.2/pydiction isk+=.,(
-	autocmd FileType go autocmd BufWritePre <buffer> Fmt
+	" autocmd FileType go autocmd BufWritePre <buffer> Fmt
 endif " has("autocmd")
 
 filetype plugin on
