@@ -53,6 +53,7 @@ noremap <silent> <C-Z>      :update<CR>
 vnoremap <silent> <C-Z>     :<C-C>:update<CR>
 inoremap <silent> <C-Z>     <C-[>:update<CR>
 
+
 " --------------------------------------------
 " Speed up navigation 4x by holding Ctrl key
 " --------------------------------------------
@@ -60,6 +61,7 @@ nmap <c-j> 4j
 nmap <c-k> 4k
 nmap <c-h> 4h
 nmap <c-l> 4l
+
 
 " ---------------------------------------------------------------------------
 " Activate plugins in ~/.vim/bundle (and ~/.vim/after/bundle, where vim-pyenv
@@ -69,17 +71,18 @@ execute pathogen#infect()
 syntax on
 filetype plugin indent on
 
+
 " ---------------------------------------------------------------------------
 " Configure vim-pyenv and jedi-vim to work nicely together
 " ---------------------------------------------------------------------------
-if jedi#init_python()
-	function! s:jedi_auto_force_py_version() abort
-		let major_version = pyenv#python#get_internal_major_version()
-		call jedi#force_py_version(major_version)
-	endfunction
-	augroup vim-pyenv-custom-augroup
-		autocmd! *
-		autocmd User vim-pyenv-activate-post   call s:jedi_auto_force_py_version()
-		autocmd User vim-pyenv-deactivate-post call s:jedi_auto_force_py_version()
-	augroup END
-endif
+"if jedi#init_python()
+"	function! s:jedi_auto_force_py_version() abort
+"		let major_version = pyenv#python#get_internal_major_version()
+"		call jedi#force_py_version(major_version)
+"	endfunction
+"	augroup vim-pyenv-custom-augroup
+"		autocmd! *
+"		autocmd User vim-pyenv-activate-post   call s:jedi_auto_force_py_version()
+"		autocmd User vim-pyenv-deactivate-post call s:jedi_auto_force_py_version()
+"	augroup END
+"endif
