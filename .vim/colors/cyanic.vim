@@ -2,14 +2,14 @@
 " vim: tw=0 ts=4 sw=4
 " Vim color file
 " Maintainer:	Samuel Lampa <samuel.lampa@gmail.com>
-" Last Change:	2015 Feb 2
+" Last Change:	2015 Aug 20
 
 hi clear
-set background=light
+set background=dark
 if exists("syntax_on")
   syntax reset
 endif
-let g:colors_name = "saml"
+let g:colors_name = "cyanic"
 hi Normal		  guifg=white guibg=black
 hi Scrollbar	  guifg=darkgrey guibg=grey
 hi Menu			  guifg=white guibg=cyan

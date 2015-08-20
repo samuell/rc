@@ -1,2 +1,9 @@
-Put vim plugins here!
+## Put vim plugins here!
+
 (They are activated in the main .vimrc by running pathogen#infect())
+
+Some recommended plugins
+------------------------------------------------------
+- jedi-vim  - https://github.com/davidhalter/jedi-vim
+- vim-pyenv - https://github.com/lambdalisue/vim-pyenv
+- vim-go    - https://github.com/fatih/vim-go

@@ -9,7 +9,7 @@ set background=light
 if exists("syntax_on")
   syntax reset
 endif
-let g:colors_name = "saml"
+let g:colors_name = "cyaniclight"
 hi Normal		  guifg=white guibg=black ctermfg=darkgrey
 hi Scrollbar	  guifg=darkgrey guibg=grey
 hi Menu			  guifg=white guibg=cyan ctermfg=white ctermbg=lightmagenta

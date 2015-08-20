@@ -3,7 +3,7 @@ if exists("did_load_filetypes")
 endif
 
 augroup filetypedetect
-    " log files such as catalina.out or log4j files.
+    " Detect log files and various pascal files as the right file type
     au! BufRead,BufNewFile catalina.out,*.out,*.out.*,*.log,*.log.* setf log
-	au! BufRead,BufNewFile *.pp,*.pas set filetype=pascal
+    au! BufRead,BufNewFile *.pp,*.pas set filetype=pascal
     augroup END
