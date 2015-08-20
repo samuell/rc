@@ -19,6 +19,7 @@ set showmode         " Show in which editing mode you currently are
 " Code formatting
 " --------------------------------------------
 set ignorecase       " Ignore casing when searching
+set tabstop=4        " Tell how long a hard tab is
 set softtabstop=4    " How many spaces are inserted on a <TAB> press
 set shiftwidth=4     " How many 'spaces' a shift move with << >> operators is
 set expandtab        " Convert tabs to spaces (for Go, gofmt will take care of converting back)
