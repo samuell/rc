@@ -47,6 +47,7 @@ alias gb='git branch -av'
 alias gd='git diff | tig'
 alias dus='du -sh * | sort -h'
 alias dusa='du -ash .* | sort -h'
+alias t='tig'
 # SSH
 alias sshpass='ssh -o PubkeyAuthentication=no'
 alias scppass='scp -o PubkeyAuthentication=no'
