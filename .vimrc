@@ -14,6 +14,9 @@ set nowrap           " Don't wrap text that goes outside the screen
 set scrolloff=12     " Ensure to always see some lines of context
 set showmatch        " Highlight matching braces
 set showmode         " Show in which editing mode you currently are
+" Expand a column to the left, to center the code a slight bit
+nmap <C-e> :let &foldcolumn = (&columns - &textwidth) / 2<CR>
+nmap <C-w> :let &foldcolumn = 0<CR>
 
 " --------------------------------------------
 " Code formatting
