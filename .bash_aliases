@@ -306,6 +306,36 @@ p12_to_pem() {
 	openssl pkcs12 -in $1 -out $1'.crt.pem' -clcerts -nokeys
 	openssl pkcs12 -in $1 -out $1'.key.pem' -nocerts -nodes
 }
+exif_posingmaps() {
+    if [[ -z $1 ]]; then
+        echo "Usage exif_openposingcal <IMAGEFILE>";
+    else
+        # Take imagefile as first argument
+        imagefile=$1
+
+        # Extract longitude position
+        longpos=$(exif -m $imagefile | grep ^Longitude | grep -oP "[0-9]+.*" | sed -r 's/,[\ ]+/ /g');
+        # Extract whether East (E) or West (W)
+        eorw_raw=$(exif -m $imagefile | grep "East or West Longitude")
+        eorw=${eorw_raw#East or West Longitude}
+
+        # Extract latitude position
+        latpos=$(exif -m $imagefile | grep ^Latitude | grep -oP "[0-9]+.*" | sed -r 's/,[\ ]+/ /g');
+        # Extract whether North (N) or South (S)
+        nosw_raw=$(exif -m $imagefile | grep "North or South Latitude")
+        nosw=${nosw_raw#North or South Latitude}
+
+        # Assemble URL
+        url="https://www.google.se/maps/place/"$longpos"%20"$eorw"%20"$latpos"%20"$nosw
+        # Replace spaces with url-safe counterpart
+        url=$(echo $url | sed 's/ /%20/g' | sed 's/,/./g');
+
+        # Open URL in browser ...
+        echo "Extracted position: $longpos $eorw, $latpos $nosw";
+        echo "Opening URL in browser: "$url;
+        exo-open --launch WebBrowser $url &
+    fi;
+}
 dh() {
 cat <<EOM
 General commands:
