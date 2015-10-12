@@ -87,6 +87,7 @@ alias py='python'
 alias p='python'
 alias pm='python manage.py'
 alias ipy='ipython'
+alias igrep='grep -i'
 psa() {
 	term=$1;
 	echo "Now showing processes including $term in name ...";
