@@ -70,6 +70,7 @@ alias tl='tmux list-sessions'
 # The ls command
 alias ls='ls --color=auto -h'
 alias l='ls -1'
+alias ll='ls -l'
 alias la='ls -1a'
 alias ltr='ls -1tr'
 alias ltra='ls -1tra'
