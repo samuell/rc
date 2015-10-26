@@ -38,7 +38,7 @@ alias aptug='sudo apt-get upgrade'
 alias ubuntu_version='lsb_release -a'
 # Git
 alias glog='git log --pretty=oneline|tig'
-alias gdiff='git diff|tig'
+alias gdiff='git diff --no-index --'
 alias gcommit='git commit'
 alias gpush='git push'
 alias gpp='git pull --rebase origin master; git push origin master;'
