@@ -404,4 +404,4 @@ Commands for working with containers (instances of images):
     wait      Block until a container stops, then print its exit code
 EOM
 }
-
+alias fixbrokendesktop='rm -rf ~/.cache/sessions'
