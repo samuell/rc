@@ -31,11 +31,11 @@ alias e='vim'
 alias v='vim'
 alias n='nano'
 # Aptitude
-alias aptg='sudo apt-get install'
+alias aptg='sudo apt-get -y install'
 alias aptr='sudo apt-get remove'
 alias apts='apt-cache search'
 alias aptu='sudo apt-get update'
-alias aptug='sudo apt-get upgrade'
+alias aptug='sudo apt-get update && sudo apt-get upgrade'
 alias ubuntu_version='lsb_release -a'
 # Git
 alias glog='git log --pretty=oneline|tig'
