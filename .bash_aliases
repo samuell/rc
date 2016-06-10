@@ -65,19 +65,19 @@ ks() {
 function tn() {
     sess=$(date +%F)
     tmux new-session -d -s $sess
-    tmux split-window -v -l 7;
-    tmux select-pane -U;
-    tmux split-window -h;
-    tmux select-pane -L;
+    #tmux split-window -v -l 7;
+    #tmux select-pane -U;
+    #tmux split-window -h;
+    #tmux select-pane -L;
     tmux -2 attach-session -d
 }
 #alias tns='tmux new -s'
 function tns() {
-    tmux new-session -d -s $1;
-    tmux split-window -v -l 7;
-    tmux select-pane -U;
-    tmux split-window -h;
-    tmux select-pane -L;
+    tmux new-session -d -s "$1";
+    #tmux split-window -v -l 7;
+    #tmux select-pane -U;
+    #tmux split-window -h;
+    #tmux select-pane -L;
     tmux -2 attach-session -d
 }
 alias ta='tmux attach'
