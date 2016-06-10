@@ -20,6 +20,7 @@ alias eb='vs ~/.bashrc'
 alias ebm='vs ~/.bashrc_mods'
 alias ebl='vs ~/.bashrc_local'
 alias ep='vs ~/.profile'
+alias ebp='vs ~/.bash_profile'
 alias et='vim ~/.tmux.conf'
 
 # --------------------------------------------------------------------------------
