@@ -40,7 +40,9 @@ alias ubuntu_version='lsb_release -a'
 # Git
 alias glog='git log --pretty=oneline|tig'
 alias gdiff='git diff --no-index --'
-alias gcommit='git commit'
+alias gcm='git commit'
+alias gco='git checkout'
+alias gcob='git checkout -b'
 alias gpush='git push'
 alias gpp='git pull --rebase; git push;'
 alias gadd='git add'
@@ -154,13 +156,15 @@ alias ....='cd ../..'
 alias ......='cd ../../..'
 mkcd() {
     mkdir -p $1;
-    cd $1;
+    cd ./$1;
 }
 
 # --------------------------------------------------------------------------------
 # Go(lang) stuff
 # --------------------------------------------------------------------------------
 alias gocov='go test -coverprofile=.cover.out;go tool cover -html=.cover.out; rm .cover.out'
+alias goperf=''
+alias gobuildsmall='go build -ldflags "-s"'
 
 # --------------------------------------------------------------------------------
 # Resource utilization stuff

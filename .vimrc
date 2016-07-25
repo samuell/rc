@@ -60,6 +60,20 @@ syntax on
 filetype plugin indent on
 
 " ---------------------------------------------------------------------------
+" Vim-Go stuff
+" ---------------------------------------------------------------------------
+let g:neocomplete#enable_at_startup = 1
+au FileType go nmap <leader>r <Plug>(go-run)
+au FileType go nmap <leader>b <Plug>(go-build)
+au FileType go nmap <leader>t <Plug>(go-test)
+au FileType go nmap <leader>c <Plug>(go-coverage)
+
+au FileType go nmap <Leader>gd <Plug>(go-doc)
+au FileType go nmap <Leader>gb <Plug>(go-doc-browser)
+au FileType go nmap <Leader>s <Plug>(go-implements)
+au FileType go nmap <Leader>i <Plug>(go-info)
+
+" ---------------------------------------------------------------------------
 " Configure vim-pyenv and jedi-vim to work nicely together
 " ---------------------------------------------------------------------------
 if jedi#init_python()
