@@ -163,7 +163,43 @@ mkcd() {
 # Go(lang) stuff
 # --------------------------------------------------------------------------------
 alias gocov='go test -coverprofile=.cover.out;go tool cover -html=.cover.out; rm .cover.out'
-alias goperf=''
+function goperf() {
+    gofile=$1;
+    p1=$2;
+    p2=$3;
+    p3=$4;
+    p4=$5;
+    p5=$6;
+    now=$(date +%Y%m%d_%H%M%S);
+    perftestbin="perftest_"$now"_"${gofile%.go}"_bin";
+    pproffile="perftest_"$now"_"${gofile%.go}".pprof";
+
+    slowfuncsfile="perftest_"$now"_"slowfuncs.log;
+    tmppprofpathfile="perftest_"$now"_tmppprofpath.txt"
+
+    if ! go list github.com/pkg/profile; then
+        go get -u github.com/pkg/profile
+    fi
+
+    if grep -q "profile" $gofile;
+    then
+        echo "Seems like profile code already exists in $gofile, so not modifying it.";
+    else
+        lineno=$(($(grep -n "import (" $gofile | cut -f1 -d:) + 1));
+        sed -i "${lineno}i \"github.com/pkg/profile\"" $gofile;
+        lineno=$(($(grep -n "main()" $gofile | cut -f1 -d:) + 1));
+        sed -i "${lineno}i defer profile.Start(profile.CPUProfile).Stop()" $gofile;
+        gofmt -w $gofile;
+    fi;
+    go build -o $perftestbin $gofile;
+    ./$perftestbin $p1 $p2 $p3 $p4 $p5 2>&1 > ${perftestbin}_output.log | grep -oP "/tmp/profile[0-9]*/cpu.pprof" | head -n 1 > $tmppprofpathfile
+    tmppproffile=$(cat $tmppprofpathfile);
+    echo "Found temporary pprof file in $tmppproffile";
+    cp $tmppproffile $pproffile;
+    go tool pprof --text --functions $perftestbin $pproffile > $slowfuncsfile;
+    echo "Wrote the slowest (cumulative) functions to $slowfuncsfile ...";
+    less -S $slowfuncsfile
+}
 alias gobuildsmall='go build -ldflags "-s"'
 
 # --------------------------------------------------------------------------------
