@@ -163,24 +163,37 @@ mkcd() {
 # Go(lang) stuff
 # --------------------------------------------------------------------------------
 alias gocov='go test -coverprofile=.cover.out;go tool cover -html=.cover.out; rm .cover.out'
+
 function goperf() {
+    # USAGE:
+    # goperf myapp.go --param1 val1 --param2 val2
+
+    # Receive params
     gofile=$1;
     p1=$2;
     p2=$3;
     p3=$4;
     p4=$5;
     p5=$6;
+
+    # Define paths for all temporary files
     now=$(date +%Y%m%d_%H%M%S);
-    perftestbin="perftest_"$now"_"${gofile%.go}"_bin";
-    pproffile="perftest_"$now"_"${gofile%.go}".pprof";
+    prefix="perftest_"$now"_"
+    perftestbin=$prefix${gofile%.go}"_bin";
+    pproffile=$prefix${gofile%.go}".pprof";
+    slowfuncsfile=$prefix"slowfuncs.log";
+    tmppprofpathfile=$prefix"tmppprofpath.txt"
 
-    slowfuncsfile="perftest_"$now"_"slowfuncs.log;
-    tmppprofpathfile="perftest_"$now"_tmppprofpath.txt"
-
-    if ! go list github.com/pkg/profile; then
+    # Make sure Dave Cheney's profile lib is installed
+    # (see http://dave.cheney.net/2013/07/07/introducing-profile-super-simple-profiling-for-go-programs)
+    if ! go list github.com/pkg/profile;
+    then
         go get -u github.com/pkg/profile
+    else
+        echo "github.com/pkg/profile already installed!"
     fi
 
+    # Inject the necessary calls to the profile library installed above
     if grep -q "profile" $gofile;
     then
         echo "Seems like profile code already exists in $gofile, so not modifying it.";
@@ -191,15 +204,28 @@ function goperf() {
         sed -i "${lineno}i defer profile.Start(profile.CPUProfile).Stop()" $gofile;
         gofmt -w $gofile;
     fi;
+
+    # Build the go file with the instrumentation code inserted
     go build -o $perftestbin $gofile;
+
+    # Run the instrumented binary, which will write a pprof file to /tmp/profile... somewhere.
+    # We grab the path reported and save it to a file
+    # (so we don't need to start a bash sub-shell, which does not work with profiling)
     ./$perftestbin $p1 $p2 $p3 $p4 $p5 2>&1 > ${perftestbin}_output.log | grep -oP "/tmp/profile[0-9]*/cpu.pprof" | head -n 1 > $tmppprofpathfile
+
+    # Get the temporary pprof file path into a variable and copy it to local folder
     tmppproffile=$(cat $tmppprofpathfile);
     echo "Found temporary pprof file in $tmppproffile";
     cp $tmppproffile $pproffile;
-    go tool pprof --text --functions $perftestbin $pproffile > $slowfuncsfile;
+
+    # Generate the (cumulatively) slowest functions listing
+    go tool pprof --text --functions --cum $perftestbin $pproffile > $slowfuncsfile;
     echo "Wrote the slowest (cumulative) functions to $slowfuncsfile ...";
+
+    # Open up the slowest functions file in less
     less -S $slowfuncsfile
 }
+
 alias gobuildsmall='go build -ldflags "-s"'
 
 # --------------------------------------------------------------------------------
@@ -210,7 +236,7 @@ alias lo='sudo cpufreq-set -r -d 1.20GHz -u 1.20GHz'
 alias hi='sudo cpufreq-set -r -d 1.20GHz -u 2.60GHz'
 alias max='sudo cpufreq-set -r -d 2.20GHz -u 2.20GHz'
 alias ccinfo='sudo cpufreq-info 2>&1|grep current|less'
-# pass options to free 
+# pass options to free
 alias meminfo='free -m -l -t'
 # get top process eating memory
 alias psmem='ps auxf | sort -nr -k 4'
@@ -266,7 +292,7 @@ function killpids() {
 }
 dlmp3() {
     for f in $(curl -s $1 | grep -oP "(http|https|ftp|www).*\.(mp3|wav|m4a|ogg|mp4)" | sort | uniq);
-        do curl -sOL $f; 
+        do curl -sOL $f;
     done;
 }
 time3() {
@@ -326,7 +352,7 @@ function lf() {
     ls -1tr | tail -n 1;
 }
 alias cutt='cut -c -$COLUMNS'
-div() { 
+div() {
     echo "=========================================================================="
     echo " $1"
     echo "=========================================================================="
