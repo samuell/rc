@@ -164,9 +164,9 @@ mkcd() {
 # --------------------------------------------------------------------------------
 alias gocov='go test -coverprofile=.cover.out;go tool cover -html=.cover.out; rm .cover.out'
 
-function goperf() {
+function goprof() {
     # USAGE:
-    # goperf myapp.go --param1 val1 --param2 val2
+    # goprof myapp.go --param1 val1 --param2 val2
 
     # Receive params
     gofile=$1;
