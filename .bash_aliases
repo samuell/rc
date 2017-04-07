@@ -267,12 +267,14 @@ us() {
 usoyster() {
     echo "Setting keyboard map to US and doing fixes for the oyster keyboard";
     setxkbmap 'us';
-    xmodmap -e 'keycode 94 = Alt_L'
     xmodmap -e 'keycode 108 = Mode_switch';
     xmodmap -e 'remove mod1 = Mode_switch';
     xmodmap -e 'keycode 34 = bracketleft braceleft aring Aring';
     xmodmap -e 'keycode 48 = apostrophe quotedbl adiaeresis Adiaeresis';
     xmodmap -e 'keycode 47 = semicolon colon odiaeresis Odiaeresis';
+    # Specific for Oyster split keyboard
+    xmodmap -e 'keycode 94 = Alt_L'
+    xmodmap -e 'keycode 64 = Super_L'
 }
 
 
