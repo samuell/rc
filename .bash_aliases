@@ -274,7 +274,7 @@ usoyster() {
     xmodmap -e 'keycode 47 = semicolon colon odiaeresis Odiaeresis';
     # Specific for Oyster split keyboard
     xmodmap -e 'keycode 94 = Alt_L'
-    xmodmap -e 'keycode 64 = Super_L'
+    #xmodmap -e 'keycode 64 = Super_L'
 }
 
 
