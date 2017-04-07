@@ -32,10 +32,10 @@ alias v='vim'
 alias n='nano'
 # Aptitude
 alias aptg='sudo apt-get -y install'
-alias aptr='sudo apt-get remove'
+alias aptr='sudo apt-get -y remove'
 alias apts='apt-cache search'
 alias aptu='sudo apt-get update'
-alias aptug='sudo apt-get update && sudo apt-get upgrade'
+alias aptug='sudo apt-get update && sudo apt-get upgrade -y'
 alias ubuntu_version='lsb_release -a'
 # Git
 alias glog='git log --pretty=oneline|tig'
@@ -162,7 +162,7 @@ mkcd() {
 # --------------------------------------------------------------------------------
 # Go(lang) stuff
 # --------------------------------------------------------------------------------
-alias gocov='go test -coverprofile=.cover.out;go tool cover -html=.cover.out; rm .cover.out'
+alias gocov='go test -coverprofile=.cover.out;go tool cover -html=.cover.out -o coverage.html; chromium-browser coverage.html; rm .cover.out coverage.html;'
 
 function goprof() {
     # USAGE:
@@ -286,7 +286,7 @@ cythonize() {
 alias cppsearchpaths="`gcc -print-prog-name=cc1plus` -v"
 alias csearchpaths="`gcc -print-prog-name=cc1` -v"
 alias ...='echo … | xsel --clipboard'
-alias chnscc='cd ~/code/farmbio/hnscc'
+alias chnscc='cd ~/proj/farmbio/hnscc'
 function killpids() {
   ps aux | grep $1 | awk '{ print $2 }' | xargs kill -9;
 }
@@ -471,3 +471,6 @@ Commands for working with containers (instances of images):
 EOM
 }
 alias fixbrokendesktop='rm -rf ~/.cache/sessions'
+alias godate='echo "Mon Jan 2 15:04:05 -0700 MST 2006"'
+alias mapesctocapslock='/usr/bin/setxkbmap -option "caps:escape"'
+alias fixoysterkb="xmodmap -e 'keysym 0x3c = Alt_L'" # Find out hex codes for keys with the xev command
