@@ -257,7 +257,7 @@ alias kb='setxkbmap'
 alias se='setxkbmap se'
 us() {
     echo "Setting keyboard map to US";
-    setxkbmap 'us';
+    setxkbmap -layout us -option "caps:swapescape";
     xmodmap -e 'keycode 108 = Mode_switch';
     xmodmap -e 'remove mod1 = Mode_switch';
     xmodmap -e 'keycode 34 = bracketleft braceleft aring Aring';
@@ -265,8 +265,8 @@ us() {
     xmodmap -e 'keycode 47 = semicolon colon odiaeresis Odiaeresis';
 }
 usoyster() {
-    echo "Setting keyboard map to US and doing fixes for the oyster keyboard";
-    setxkbmap 'us';
+    echo "Setting keyboard map to US, switching CapsLock and ESC, and doing fixes for the oyster keyboard";
+    setxkbmap -layout us -option "caps:swapescape";
     xmodmap -e 'keycode 108 = Mode_switch';
     xmodmap -e 'remove mod1 = Mode_switch';
     xmodmap -e 'keycode 34 = bracketleft braceleft aring Aring';
@@ -274,7 +274,9 @@ usoyster() {
     xmodmap -e 'keycode 47 = semicolon colon odiaeresis Odiaeresis';
     # Specific for Oyster split keyboard
     xmodmap -e 'keycode 94 = Alt_L'
-    #xmodmap -e 'keycode 64 = Super_L'
+    xmodmap -e 'keycode 64 = Super_L'
+    xmodmap -e 'clear mod1'
+    #xmodmap -e 'add mod1 = Super_L'
 }
 
 
