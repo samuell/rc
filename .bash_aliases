@@ -75,12 +75,12 @@ function tn() {
 }
 #alias tns='tmux new -s'
 function tns() {
-    tmux new-session -d -s "$1";
+    tmux new-session -s "$1";
     #tmux split-window -v -l 7;
     #tmux select-pane -U;
     #tmux split-window -h;
     #tmux select-pane -L;
-    tmux -2 attach-session -d
+    #tmux -2 attach-session -d
 }
 alias ta='tmux attach'
 alias tas='tmux attach -t'
@@ -102,6 +102,8 @@ alias last='tail -n 1'
 alias llast='ls -1tr | last'
 alias slast='llast | xargs less -iS'
 alias lslast='llast | xargs less -i'
+alias elast='llast | xargs vim'
+alias vlast='llast | xargs vim'
 # Misc
 alias s='less -SiR'
 alias z='zless -SiR'
@@ -151,6 +153,7 @@ c() {
     echo " ";
     pwd;
 }
+alias th='thunar . &'
 alias ..='cd ..'
 alias ....='cd ../..'
 alias ......='cd ../../..'
@@ -257,7 +260,8 @@ alias kb='setxkbmap'
 alias se='setxkbmap se'
 us() {
     echo "Setting keyboard map to US";
-    setxkbmap -layout us -option "caps:swapescape";
+    setxkbmap -layout us -option caps:escape;
+    xmodmap -e "remove Lock = Caps_Lock"
     xmodmap -e 'keycode 108 = Mode_switch';
     xmodmap -e 'remove mod1 = Mode_switch';
     xmodmap -e 'keycode 34 = bracketleft braceleft aring Aring';
@@ -265,8 +269,9 @@ us() {
     xmodmap -e 'keycode 47 = semicolon colon odiaeresis Odiaeresis';
 }
 usoyster() {
-    echo "Setting keyboard map to US, switching CapsLock and ESC, and doing fixes for the oyster keyboard";
-    setxkbmap -layout us -option "caps:swapescape";
+    echo "Setting keyboard map to US, mapping ESC to CapsLock too, and doing fixes for the oyster keyboard";
+    setxkbmap -layout us -option caps:escape;
+    xmodmap -e "remove Lock = Caps_Lock"
     xmodmap -e 'keycode 108 = Mode_switch';
     xmodmap -e 'remove mod1 = Mode_switch';
     xmodmap -e 'keycode 34 = bracketleft braceleft aring Aring';
@@ -448,7 +453,7 @@ General commands:
     login     Register or Login to the docker registry server
     version   Show the docker version information
 
-Commands for working with images:
+Image commands:
     build     Build an image from a Dockerfile
     history   Show the history of an image
     images    List images
@@ -461,11 +466,11 @@ Commands for working with images:
     search    Search for an image in the docker index
     tag       Tag an image into a repository
 
-Commands for working with containers (instances of images):
+Container commands:
     attach    Attach to a running container
     commit    Create a new image from a container's changes
-    diff      Inspect changes on a container's filesystem
     cp        Copy files/folders from the containers filesystem to the host path
+    diff      Inspect changes on a container's filesystem
     export    Stream the contents of a container as a tar archive
     inspect   Return low-level information on a container
     kill      Kill a running container
@@ -488,3 +493,5 @@ alias fixbrokendesktop='rm -rf ~/.cache/sessions'
 alias godate='echo "Mon Jan 2 15:04:05 -0700 MST 2006"'
 alias mapesctocapslock='/usr/bin/setxkbmap -option "caps:escape"'
 alias fixoysterkb="xmodmap -e 'keysym 0x3c = Alt_L'" # Find out hex codes for keys with the xev command
+alias fsqli='fsql -interactive'
+alias cols="sed 's/\t/|/g' | column -t -s'|'"
