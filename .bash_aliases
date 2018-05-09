@@ -250,7 +250,7 @@ alias pscpu10='ps auxf | sort -nr -k 3 | head -10'
 # Get server cpu info
 alias cpuinfo='lscpu'
 # Directory sizes
-alias dirsizes='{ for f in `find -maxdepth 1 -type d`; do du -sh $f; done; }|sort -h'
+alias dirsizes='{ for f in `find -maxdepth 1 -type d`; do du -sh "$f"; done; }|sort -h'
 alias logmemusage='sar -r 1'
 
 # --------------------------------------------------------------------------------
