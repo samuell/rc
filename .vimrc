@@ -51,6 +51,15 @@ nmap <c-k> 4k
 nmap <c-h> 4h
 nmap <c-l> 4l
 
+" Turn of vim's increment command
+nnoremap <silent> <C-A>  <Nop>
+vnoremap <silent> <C-A>  <Nop>
+inoremap <silent> <C-A>  <Nop>
+" Turn of vim's decrement command
+nnoremap <silent> <C-X>  <Nop>
+vnoremap <silent> <C-X>  <Nop>
+inoremap <silent> <C-X>  <Nop>
+
 " ---------------------------------------------------------------------------
 " Activate plugins in ~/.vim/bundle (and ~/.vim/after/bundle, where vim-pyenv
 " should be stored
