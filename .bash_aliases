@@ -342,8 +342,8 @@ bookmark() {
 		echo "Usage: bookmark BOOKMARKNAME";
 	else
 		name=$1;
-		dir=$(basename $(pwd));
-		echo "alias c$name='c $dir'" >> ~/.bash_aliases_local
+		dir=$(pwd);
+		echo "alias c.$name='c $dir'" >> ~/.bash_aliases_local
 		source ~/.bash_aliases_local
 	fi
 }
@@ -494,4 +494,19 @@ alias godate='echo "Mon Jan 2 15:04:05 -0700 MST 2006"'
 alias mapesctocapslock='/usr/bin/setxkbmap -option "caps:escape"'
 alias fixoysterkb="xmodmap -e 'keysym 0x3c = Alt_L'" # Find out hex codes for keys with the xev command
 alias fsqli='fsql -interactive'
-alias cols="sed 's/\t/|/g' | column -t -s'|'"
+alias ct='column -t'
+alias compiletex='latexmk -pdf -pdflatex="pdflatex --shell-escape" -pvc'
+alias t1='tree -L 1'
+alias t2='tree -L 2'
+alias t3='tree -L 3'
+alias t4='tree -L 4'
+alias t5='tree -L 5'
+alias t6='tree -L 6'
+alias t7='tree -L 7'
+function colt() {
+    column -t $1 | less -Sri
+}
+
+alias awkcsv="gawk -vFPAT='[^,]*|\"[^\"]*\"'"
+
+alias findlatest='find . -printf "%T@ %Tc %p\n" | sort -n'
