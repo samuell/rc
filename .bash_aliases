@@ -262,7 +262,7 @@ alias se='setxkbmap se'
 us() {
     echo "Setting keyboard map to US";
     setxkbmap -layout us -option caps:escape;
-    xmodmap -e "remove Lock = Caps_Lock"
+    #xmodmap -e "remove Lock = Caps_Lock" # Gives an error message, so uncommented for now
     xmodmap -e 'keycode 108 = Mode_switch';
     xmodmap -e 'remove mod1 = Mode_switch';
     xmodmap -e 'keycode 34 = bracketleft braceleft aring Aring';
