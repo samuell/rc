@@ -40,6 +40,7 @@ alias ubuntu_version='lsb_release -a'
 # Git
 alias glog='git log --pretty=oneline|tig'
 alias gdiff='git diff --no-index --'
+alias gwdiff='git diff --word-diff --no-index --'
 alias gcm='git commit'
 alias gco='git checkout'
 alias gcob='git checkout -b'
