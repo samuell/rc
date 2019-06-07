@@ -56,9 +56,9 @@ nnoremap <silent> <C-A>  <Nop>
 vnoremap <silent> <C-A>  <Nop>
 inoremap <silent> <C-A>  <Nop>
 " Turn of vim's decrement command
-nnoremap <silent> <C-X>  <Nop>
-vnoremap <silent> <C-X>  <Nop>
-inoremap <silent> <C-X>  <Nop>
+"nnoremap <silent> <C-X>  <Nop>
+"vnoremap <silent> <C-X>  <Nop>
+"inoremap <silent> <C-X>  <Nop>
 
 " ---------------------------------------------------------------------------
 " Activate plugins in ~/.vim/bundle (and ~/.vim/after/bundle, where vim-pyenv
