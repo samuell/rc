@@ -15,6 +15,7 @@ alias ev='vim ~/.vimrc'
 alias ei='vim ~/.irods/.irodsEnv'
 alias evc='vim ~/.vim/colors/samllight.vim'
 alias ea='vs ~/.bash_aliases'
+alias eg='vim ~/.gitconfig'
 alias eal='vs ~/.bash_aliases_local'
 alias eb='vs ~/.bashrc'
 alias ebm='vs ~/.bashrc_mods'
@@ -511,3 +512,41 @@ function colt() {
 alias awkcsv="gawk -vFPAT='[^,]*|\"[^\"]*\"'"
 
 alias findlatest='find . -printf "%T@ %Tc %p\n" | sort -n'
+
+function dot2pdf() {
+    f=$1;
+    dot -Tpdf $f -o ${f%.dot}.pdf
+}
+function stamp() {
+    old=$1;
+    pre=${old%.*};
+    ext=${old#*.};
+    stamp=$(date +%Y%m%d-%H%M%S);
+    new=$pre"-"$stamp"."$ext;
+    echo "Creating date-stamped file: $new ..."
+    cp $old $new;
+}
+
+function cleanup-docker() {
+    # remove exited containers:
+    docker ps --filter status=dead --filter status=exited -aq | xargs -r sudo docker rm -v
+
+    # remove unused images:
+    docker images --no-trunc | grep '<none>' | awk '{ print $3 }' | xargs -r sudo docker rmi
+
+    # remove unused volumes:
+    sudo find '/var/lib/docker/volumes/' -mindepth 1 -maxdepth 1 -type d | grep -vFf <(
+        docker ps -aq | xargs docker inspect | jq -r '.[] | .Mounts | .[] | .Name | select(.)'
+    ) | xargs -r sudo rm -fr
+}
+
+function latexabbrvs() {
+    texfile=$1;
+    echo "\begin{itemize}";
+    for a in $(grep -oP "[A-Z]{2,}?\s" $texfile | sort | uniq); do
+        echo "    \item $a: ";
+    done;
+    echo "\end{itemize}"
+}
+
+alias mergepdfs='echo "Usage: pdftk file1.pdf file2.pdf cat output mergedfile.pdf"'
