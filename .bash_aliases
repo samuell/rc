@@ -551,3 +551,8 @@ function latexabbrvs() {
 }
 
 alias mergepdfs='echo "Usage: pdftk file1.pdf file2.pdf cat output mergedfile.pdf"'
+
+# Vim Wiki stuff
+alias w='f; cd wiki;'
+alias wt='j; cd wiki; { echo "## Wiki"; echo; for f in $(ls | sed "s/.md//"); do echo "- [${f^}]($f)"; done } > index.md; git pull --rebase; typora index.md; git add *.md; git commit -m "Update wiki" *; git push;'
+alias wv='j; cd wiki; { echo "## Wiki"; echo; for f in $(ls | sed "s/.md//"); do echo "- [${f^}]($f)"; done } > index.md; git pull --rebase; vim index.md; git add *.md; git commit -m "Update wiki" *; git push;'
