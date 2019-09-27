@@ -556,3 +556,9 @@ alias mergepdfs='echo "Usage: pdftk file1.pdf file2.pdf cat output mergedfile.pd
 alias w='f; cd wiki;'
 alias wt='j; cd wiki; { echo "## Wiki"; echo; for f in $(ls | sed "s/.md//"); do echo "- [${f^}]($f)"; done } > index.md; git pull --rebase; typora index.md; git add *.md; git commit -m "Update wiki" *; git push;'
 alias wv='j; cd wiki; { echo "## Wiki"; echo; for f in $(ls | sed "s/.md//"); do echo "- [${f^}]($f)"; done } > index.md; git pull --rebase; vim index.md; git add *.md; git commit -m "Update wiki" *; git push;'
+alias ellipsis='echo …'
+
+function pdf_p1_to_png() {
+    f=$f;
+    pdftoppm $f ${f%.pdf} -png -f 1 -singlefile -ry 64 -rx 64
+}
