@@ -44,7 +44,7 @@ alias ubuntu_version='lsb_release -a'
 alias glog='git log --pretty=oneline|tig'
 alias gdiff='git diff --no-index --'
 alias gwdiff='git diff --word-diff --no-index --'
-alias gcm='git commit'
+alias gcm='git commit -m'
 alias gco='git checkout'
 alias gcob='git checkout -b'
 alias gpush='git push'
@@ -513,8 +513,7 @@ function colt() {
     column -t $1 | less -Sri
 }
 
-alias awkcsv="gawk -vFPAT='[^,]*|\"[^\"]*\"'"
-
+alias awkcsv="gawk -vFPAT='[^,]*|\"[^\"]*"
 alias findlatest='find . -printf "%T@ %Tc %p\n" | sort -n'
 
 function dot2pdf() {
