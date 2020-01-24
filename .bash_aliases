@@ -16,6 +16,7 @@ alias ev='vim ~/.vimrc'
 alias ei='vim ~/.irods/.irodsEnv'
 alias evc='vim ~/.vim/colors/samllight.vim'
 alias ea='vs ~/.bash_aliases'
+alias sb='source ~/.bashrc'
 alias eg='vim ~/.gitconfig'
 alias eal='vs ~/.bash_aliases_local'
 alias eb='vs ~/.bashrc'
@@ -342,14 +343,16 @@ install_vundle() {
 }
 bookmark() {
 	if [[ ! $1 ]]; then
-		echo "Usage: bookmark BOOKMARKNAME";
+        echo "Please provide a bookmark name (will be prepended with 'c.'):";
+        read name;
 	else
 		name=$1;
-		dir=$(pwd);
-		echo "alias c.$name='c $dir'" >> ~/.bash_aliases_local
-		source ~/.bash_aliases_local
-	fi
+    fi
+    dir=$(pwd);
+    echo "alias c.$name='c $dir'" >> ~/.bash_aliases_local
+    source ~/.bash_aliases_local
 }
+alias bm='bookmarks'
 bookmarks() {
     cat ~/.bash_aliases_local | grep "alias c"
 }
@@ -559,6 +562,6 @@ alias wv='j; cd wiki; { echo "## Wiki"; echo; for f in $(ls | sed "s/.md//"); do
 alias ellipsis='echo …'
 
 function pdf_p1_to_png() {
-    f=$f;
+    f=$1;
     pdftoppm $f ${f%.pdf} -png -f 1 -singlefile -ry 64 -rx 64
 }

@@ -16,3 +16,6 @@ if [ -f ~/.bash_aliases_local ]; then
 fi
 
 export PS1="[\u \W]$ "
+
+# Stop Ctrl+S from freezing terminal
+stty -ixon

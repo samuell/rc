@@ -14,9 +14,6 @@ set nowrap           " Don't wrap text that goes outside the screen
 set scrolloff=12     " Ensure to always see some lines of context
 set showmatch        " Highlight matching braces
 set showmode         " Show in which editing mode you currently are
-" Expand a column to the left, to center the code a slight bit
-nmap <C-e> :let &foldcolumn = (&columns - &textwidth) / 2<CR>
-nmap <C-w> :let &foldcolumn = 0<CR>
 
 " --------------------------------------------
 " Code formatting
@@ -61,12 +58,19 @@ inoremap <silent> <C-A>  <Nop>
 "inoremap <silent> <C-X>  <Nop>
 
 " ---------------------------------------------------------------------------
+" Settings for vim wiki
+" ---------------------------------------------------------------------------
+set nocompatible
+filetype plugin on
+syntax on
+
+" ---------------------------------------------------------------------------
 " Activate plugins in ~/.vim/bundle (and ~/.vim/after/bundle, where vim-pyenv
 " should be stored
 " ---------------------------------------------------------------------------
-execute pathogen#infect()
 syntax on
 filetype plugin indent on
+execute pathogen#infect()
 
 " ---------------------------------------------------------------------------
 " Vim-Go stuff
@@ -85,14 +89,14 @@ au FileType go nmap <Leader>i <Plug>(go-info)
 " ---------------------------------------------------------------------------
 " Configure vim-pyenv and jedi-vim to work nicely together
 " ---------------------------------------------------------------------------
-if jedi#init_python()
-    function! s:jedi_auto_force_py_version() abort
-        let major_version = pyenv#python#get_internal_major_version()
-        call jedi#force_py_version(major_version)
-    endfunction
-    augroup vim-pyenv-custom-augroup
-        autocmd! *
-        autocmd User vim-pyenv-activate-post   call s:jedi_auto_force_py_version()
-        autocmd User vim-pyenv-deactivate-post call s:jedi_auto_force_py_version()
-    augroup END
-endif
+"if jedi#init_python()
+"    function! s:jedi_auto_force_py_version() abort
+"        let major_version = pyenv#python#get_internal_major_version()
+"        call jedi#force_py_version(major_version)
+"    endfunction
+"    augroup vim-pyenv-custom-augroup
+"        autocmd! *
+"        autocmd User vim-pyenv-activate-post   call s:jedi_auto_force_py_version()
+"        autocmd User vim-pyenv-deactivate-post call s:jedi_auto_force_py_version()
+"    augroup END
+"endif
