@@ -163,7 +163,7 @@ alias ....='cd ../..'
 alias ......='cd ../../..'
 mkcd() {
     mkdir -p $1;
-    cd ./$1;
+    cd $1;
 }
 
 # --------------------------------------------------------------------------------
@@ -564,3 +564,19 @@ function pdf_p1_to_png() {
     f=$1;
     pdftoppm $f ${f%.pdf} -png -f 1 -singlefile -ry 64 -rx 64
 }
+
+alias ad='ansible-doc'
+function ads() {
+    plugin=$1;
+    ansible-doc $plugin | s;
+}
+alias adl='ansible-doc -l'
+alias adls='ansible-doc -l | s'
+alias py=python
+
+findlike() {
+    likewhat=$1
+    find -name "*$likewhat*"
+}
+
+alias update-display='eval $(tmux showenv -s DISPLAY)'
