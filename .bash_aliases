@@ -560,7 +560,7 @@ alias wt='j; cd wiki; { echo "## Wiki"; echo; for f in $(ls | sed "s/.md//"); do
 alias wv='j; cd wiki; { echo "## Wiki"; echo; for f in $(ls | sed "s/.md//"); do echo "- [${f^}]($f)"; done } > index.md; git pull --rebase; vim index.md; git add *.md; git commit -m "Update wiki" *; git push;'
 alias ellipsis='echo …'
 
-function pdf_p1_to_png() {
+function pdfp1_to_png() {
     f=$1;
     pdftoppm $f ${f%.pdf} -png -f 1 -singlefile -ry 64 -rx 64
 }
@@ -580,3 +580,26 @@ findlike() {
 }
 
 alias update-display='eval $(tmux showenv -s DISPLAY)'
+
+alias cleantex='rm *.{aux,bbl,blg,out,fls,log,fdb_latexmk}'
+function png2ico() {
+    convert \
+        $1 \
+        -flatten -colors 256 \
+        -background transparent \
+        $2;
+}
+
+function extractpdfpages() {
+    pdffile=$1
+    p1=$2
+    p2=$3
+    outfile=$4
+    if [[ $pdffile == '' || $p1 == '' || $p2 == '' || $outfile == '' ]]; then
+        echo "Usage: extractpdfpages PDFFILE P1 P2 OUTFILE";
+        return;
+    fi;
+    pdftk $pdffile cat $p1-$p2 output $4
+}
+
+alias cr='crystal'
