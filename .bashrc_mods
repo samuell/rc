@@ -19,10 +19,12 @@ fi
 stty -ixon
 
 export DOTNET_CLI_TELEMETRY_OPTOUT=1
-export PS1="[\h \W]$ "
 
 export GOROOT=~/go
 export GOPATH=~/proj/go
 
 export PATH=~/go/bin:$PATH
 export PATH=~/proj/go/bin:$PATH
+
+export PS1="[\h \W]$ "
+
