@@ -169,7 +169,7 @@ mkcd() {
 # --------------------------------------------------------------------------------
 # Go(lang) stuff
 # --------------------------------------------------------------------------------
-alias gocov='go test -coverprofile=.cover.out;go tool cover -html=.cover.out -o coverage.html; chromium-browser coverage.html; rm .cover.out coverage.html;'
+alias gocov='go test -coverprofile=.cover.out;go tool cover -html=.cover.out -o coverage.html; brave-browser coverage.html; sleep 10; rm .cover.out coverage.html;'
 
 function goprof() {
     # USAGE:
