@@ -80,6 +80,12 @@ Plug 'davidhalter/jedi-vim', { 'for': 'python' }
 " Go stuff
 Plug 'fatih/vim-go', { 'for': 'go' }
 
+" Rust stuff
+Plug 'rust-lang/rust.vim'
+
+" Rust stuff
+Plug 'vim-crystal/vim-crystal'
+
 " Initialize plugin system
 call plug#end()
 
@@ -90,7 +96,7 @@ call plug#end()
 let g:slime_target = "tmux"
 
 let g:ipython_cell_delimit_cells_by = 'tags'
-let g:ipython_cell_valid_marks = '#%%'
+let g:ipython_cell_valid_marks = [ '#%%' ]
 
 " map <Leader>c to execute the current cell
 nnoremap <Leader>c :IPythonCellExecuteCell<CR>
@@ -98,5 +104,11 @@ nnoremap <Leader>c :IPythonCellExecuteCell<CR>
 " map <Leader>C to execute the current cell and jump to the next cell
 nnoremap <Leader>C :IPythonCellExecuteCellJump<CR>
 "
-" map <Leader>C to 'run all' in the document
+" map <Leader>a to 'run all' in the document
 nnoremap <Leader>a :IPythonCellRun<CR>
+"
+" ---------------------------------------------------------------------------
+" Vim-Crystal config
+" ---------------------------------------------------------------------------
+
+let g:crystal_auto_format = 1
