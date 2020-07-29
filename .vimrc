@@ -86,6 +86,9 @@ Plug 'rust-lang/rust.vim'
 " Rust stuff
 Plug 'vim-crystal/vim-crystal'
 
+" Vimwiki
+Plug 'vimwiki/vimwiki'
+
 " Initialize plugin system
 call plug#end()
 
