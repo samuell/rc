@@ -302,12 +302,6 @@ alias switchjava='sudo update-alternatives --config java'
 topname() {
     top -p $(pgrep -d"," $1);
 }
-cythonize() {
-    cython --embed $1.pyx
-    gcc -I/usr/include/python2.7 -O3 -o $1 $1.c -lpython2.7
-}
-alias cppsearchpaths="`gcc -print-prog-name=cc1plus` -v"
-alias csearchpaths="`gcc -print-prog-name=cc1` -v"
 alias ...='echo … | xsel --clipboard'
 alias chnscc='cd ~/proj/farmbio/hnscc'
 function killpids() {
