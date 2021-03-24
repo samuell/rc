@@ -169,7 +169,11 @@ mkcd() {
 # --------------------------------------------------------------------------------
 # Go(lang) stuff
 # --------------------------------------------------------------------------------
-alias gocov='go test -coverprofile=.cover.out;go tool cover -html=.cover.out -o coverage.html; brave-browser coverage.html; sleep 10; rm .cover.out coverage.html;'
+alias gocov='go test -coverprofile=.cover.out; \
+    go tool cover -html=.cover.out -o coverage.html; \
+    brave-browser coverage.html; \
+    sleep 1; \
+    rm .cover.out coverage.html;'
 
 function goprof() {
     # USAGE:
@@ -597,3 +601,19 @@ function extractpdfpages() {
 }
 
 alias cr='crystal'
+
+alias ts.cli='tmux split-pane -v -p 20'
+
+alias jn='jupyter notebook'
+alias go2='~/go2/bin/go tool go2go'
+alias encrypt-file='gpg -c'
+alias decrypt-file='gpg'
+alias dfh='df -h'
+
+function filedate() {
+    stat $1 | grep Modify | grep -oP "20[0-9][0-9]\-[0-9][0-9]\-[0-9][0-9]\ [0-9][0-9]:[0-9][0-9]:[0-9][0-9]" | sed 's/ /-/' | sed 's/://g'
+}
+function fit2gpx() {
+    f=$1;
+    gpsbabel -i garmin_fit -o gpx -f $f -F ${f%.FIT}.gpx;
+}
