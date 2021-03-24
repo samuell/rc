@@ -1,9 +1,12 @@
-" --------------------------------------------
+"--------------------------------------------
 " General stuff
 " --------------------------------------------
 let mapleader = ','    " Use , as leader key
 set hlsearch         " Highlight search results
 set backspace=2      " Make backspace work like most other apps
+set textwidth=100
+set splitright
+set splitbelow
 
 " --------------------------------------------
 " Code display
@@ -38,24 +41,31 @@ autocmd FileType python setlocal expandtab
 " --------------------------------------------
 nmap <C-N> :noh <CR>
 imap jj <Esc>
-" Remap Ctrl + Z to save, in all modes:
+" Remap Ctrl + S to save, in all modes:
 noremap <silent> <C-S>          :update<CR>
 vnoremap <silent> <C-S>         <ESC>:update<CR>
 inoremap <silent> <C-S>         <ESC>:update<CR>
-" Speed up navigation 4x by holding Ctrl key
-nmap <c-j> 4j
-nmap <c-k> 4k
-nmap <c-h> 4h
-nmap <c-l> 4l
 
 " Turn of vim's increment command
 nnoremap <silent> <C-A>  <Nop>
 vnoremap <silent> <C-A>  <Nop>
 inoremap <silent> <C-A>  <Nop>
 " Turn of vim's decrement command
-"nnoremap <silent> <C-X>  <Nop>
-"vnoremap <silent> <C-X>  <Nop>
-"inoremap <silent> <C-X>  <Nop>
+nnoremap <silent> <C-X>  <Nop>
+vnoremap <silent> <C-X>  <Nop>
+inoremap <silent> <C-X>  <Nop>
+
+" Split editor window vertically
+nnoremap <C-I> :vs<CR>
+" Open .vimrc
+nnoremap <C-E> :vs ~/.vimrc<CR>
+" Open today's journal
+let $journalfile="/home/shl/journal" . strftime("%Y-%m-%d") . ".md"
+nnoremap <C-J> :vs $journalfile<CR>
+" Refresh vim
+nnoremap <F5> :source ~/.vimrc<CR>
+" Close window
+nnoremap <C-Q> :q<CR>
 
 " ---------------------------------------------------------------------------
 " Settings for vim wiki
@@ -79,12 +89,41 @@ Plug 'davidhalter/jedi-vim', { 'for': 'python' }
 
 " Go stuff
 Plug 'fatih/vim-go', { 'for': 'go' }
+"
+"" Rust stuff
+"Plug 'rust-lang/rust.vim', { 'for': 'rust' }
+Plug 'racer-rust/vim-racer'
+set hidden
+let g:racer_cmd = "/home/shl/.cargo/bin/racer"
+let g:racer_experimental_completer = 1
 
-" Rust stuff
-Plug 'rust-lang/rust.vim'
+augroup Racer
+    autocmd!
+    autocmd FileType rust nmap <buffer> gd         <Plug>(rust-def)
+    autocmd FileType rust nmap <buffer> gs         <Plug>(rust-def-split)
+    autocmd FileType rust nmap <buffer> gx         <Plug>(rust-def-vertical)
+    autocmd FileType rust nmap <buffer> gt         <Plug>(rust-def-tab)
+    autocmd FileType rust nmap <buffer> <leader>gd <Plug>(rust-doc)
+    autocmd FileType rust nmap <buffer> <leader>gD <Plug>(rust-doc-tab)
+    noremap <silent> <C-F>          :RustFmt<CR>
+    vnoremap <silent> <C-F>         <ESC>:RustFmt<CR>
+    inoremap <silent> <C-F>         <ESC>:RustFmt<CR>
+augroup END
 
-" Rust stuff
+" Crystal stuff
 Plug 'vim-crystal/vim-crystal'
+
+" Vim wiki
+Plug 'vimwiki/vimwiki'
+
+" Nerd tree
+Plug 'scrooloose/nerdtree'
+
+" Ctrl+P support
+Plug 'ctrlpvim/ctrlp.vim'
+
+" Nerd tree
+Plug 'kien/ctrlp.vim'
 
 " Vimwiki
 Plug 'vimwiki/vimwiki'
@@ -99,7 +138,7 @@ call plug#end()
 let g:slime_target = "tmux"
 
 let g:ipython_cell_delimit_cells_by = 'tags'
-let g:ipython_cell_valid_marks = [ '#%%' ]
+let g:ipython_cell_valid_marks = [ '# %%' ]
 
 " map <Leader>c to execute the current cell
 nnoremap <Leader>c :IPythonCellExecuteCell<CR>
@@ -115,3 +154,23 @@ nnoremap <Leader>a :IPythonCellRun<CR>
 " ---------------------------------------------------------------------------
 
 let g:crystal_auto_format = 1
+
+" ---------------------------------------------------------------------------
+" Jedi config
+" ---------------------------------------------------------------------------
+nnoremap gd :call jedi#goto()<CR>
+
+" ---------------------------------------------------------------------------
+" NERD Tree
+" ---------------------------------------------------------------------------
+let NERDTreeIgnore=['\.pyc', '\~$']
+nnoremap <c-f> :NERDTreeFocus<CR>
+nnoremap <c-n> :NERDTree<CR>
+nnoremap tt :NERDTreeToggle<CR>
+nnoremap ff :NERDTreeFind<CR>
+
+" ---------------------------------------------------------------------------
+" Ctrl-P Config
+" ---------------------------------------------------------------------------
+let g:ctrlp_map = '<c-p>'
+let g:ctrlp_cmd = 'CtrlP'
