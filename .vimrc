@@ -88,10 +88,10 @@ Plug 'hanschen/vim-ipython-cell', { 'for': 'python' } " https://github.com/hansc
 Plug 'davidhalter/jedi-vim', { 'for': 'python' }
 
 " Go stuff
-Plug 'fatih/vim-go', { 'for': 'go' }
-"
-"" Rust stuff
-"Plug 'rust-lang/rust.vim', { 'for': 'rust' }
+Plug 'fatih/vim-go', { 'for': [ 'go', 'go2' ] }
+
+" Rust stuff
+Plug 'rust-lang/rust.vim', { 'for': 'rust' }
 Plug 'racer-rust/vim-racer'
 set hidden
 let g:racer_cmd = "/home/shl/.cargo/bin/racer"
@@ -174,3 +174,7 @@ nnoremap ff :NERDTreeFind<CR>
 " ---------------------------------------------------------------------------
 let g:ctrlp_map = '<c-p>'
 let g:ctrlp_cmd = 'CtrlP'
+
+" Vim-Go config
+" ---------------------------------------------------------------------------
+let g:go_fmt_command = "goimports"

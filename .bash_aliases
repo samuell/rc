@@ -562,6 +562,14 @@ function pdfp1_to_png() {
     f=$1;
     pdftoppm $f ${f%.pdf} -png -f 1 -singlefile -ry 64 -rx 64
 }
+function pdfp1_to_png_large() {
+    f=$1;
+    pdftoppm $f ${f%.pdf} -png -f 1 -singlefile -ry 150 -rx 150
+}
+function pdfp1_to_png_200dpi() {
+    f=$1;
+    pdftoppm $f ${f%.pdf} -png -f 1 -singlefile -ry 200 -rx 200
+}
 
 alias ad='ansible-doc'
 function ads() {
