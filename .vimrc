@@ -120,10 +120,13 @@ Plug 'vimwiki/vimwiki'
 Plug 'scrooloose/nerdtree'
 
 " Ctrl+P support
-Plug 'ctrlpvim/ctrlp.vim'
+Plug 'kien/ctrlp.vim'
 
 " Nerd tree
-Plug 'kien/ctrlp.vim'
+Plug 'preservim/nerdtree'
+
+" Tagbar
+Plug 'preservim/tagbar'
 
 " Vimwiki
 Plug 'vimwiki/vimwiki'
@@ -178,3 +181,8 @@ let g:ctrlp_cmd = 'CtrlP'
 " Vim-Go config
 " ---------------------------------------------------------------------------
 let g:go_fmt_command = "goimports"
+
+" ---------------------------------------------------------------------------
+" Tagbar Config
+" ---------------------------------------------------------------------------
+nmap <F8> :TagbarToggle<CR>
