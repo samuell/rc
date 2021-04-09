@@ -625,3 +625,18 @@ function fit2gpx() {
     f=$1;
     gpsbabel -i garmin_fit -o gpx -f $f -F ${f%.FIT}.gpx;
 }
+
+alias pypi-release='rm dist/* && python -m build && python -m twine upload dist/*'
+
+alias cleanlatex='rm *.{blg,bbl,aux,log}'
+function buildlatex() {
+    if [[ -z $1 ]]; then
+        echo "Usage: buildlatex somefile.tex";
+        return;
+    fi;
+    texfile=$1;
+    pdflatex $texfile \
+        && bibtex ${texfile%.tex}.aux \
+        && pdflatex $texfile \
+        && pdflatex $texfile;
+}
