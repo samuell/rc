@@ -4,7 +4,7 @@
 let mapleader = ','    " Use , as leader key
 set hlsearch         " Highlight search results
 set backspace=2      " Make backspace work like most other apps
-set textwidth=100
+set textwidth=80
 set splitright
 set splitbelow
 
