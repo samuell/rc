@@ -51,9 +51,9 @@ nnoremap <silent> <C-A>  <Nop>
 vnoremap <silent> <C-A>  <Nop>
 inoremap <silent> <C-A>  <Nop>
 " Turn of vim's decrement command
-nnoremap <silent> <C-X>  <Nop>
-vnoremap <silent> <C-X>  <Nop>
-inoremap <silent> <C-X>  <Nop>
+"nnoremap <silent> <C-X>  <Nop>
+"vnoremap <silent> <C-X>  <Nop>
+"inoremap <silent> <C-X>  <Nop>
 
 " Split editor window vertically
 nnoremap <C-I> :vs<CR>
@@ -116,9 +116,6 @@ Plug 'vim-crystal/vim-crystal'
 " Vim wiki
 Plug 'vimwiki/vimwiki'
 
-" Nerd tree
-Plug 'scrooloose/nerdtree'
-
 " Ctrl+P support
 Plug 'kien/ctrlp.vim'
 
@@ -127,9 +124,6 @@ Plug 'preservim/nerdtree'
 
 " Tagbar
 Plug 'preservim/tagbar'
-
-" Vimwiki
-Plug 'vimwiki/vimwiki'
 
 " Initialize plugin system
 call plug#end()
