@@ -1,0 +1,19 @@
+[core]
+	editor = vim
+	autocrlf = false
+[alias]
+    cl = clone
+    co = checkout
+    cob = checkout -b
+    ps = push
+    psf = push -f
+    pl = pull
+    plr = pull --rebase
+    ct = commit
+    ctm = commit -m
+    ctam = commit -am
+    ap = add -p
+    rb = rebase
+    st = status
+    wdiff = diff --word-diff
+    url-origin = remote get-url origin
