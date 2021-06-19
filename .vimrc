@@ -60,7 +60,7 @@ nnoremap <C-I> :vs<CR>
 " Open .vimrc
 nnoremap <C-E> :vs ~/.vimrc<CR>
 " Open today's journal
-let $journalfile="/home/shl/journal" . strftime("%Y-%m-%d") . ".md"
+let $journalfile="/home/shl/journal/" . strftime("%Y/%m/%Y%m%d-%u.md")
 nnoremap <C-J> :vs $journalfile<CR>
 " Refresh vim
 nnoremap <F5> :source ~/.vimrc<CR>
@@ -73,6 +73,8 @@ nnoremap <C-Q> :q<CR>
 set nocompatible
 filetype plugin on
 syntax on
+
+nnoremap <C-O> :VimwikiVSplitLink(reuse=1)<CR>
 
 " ---------------------------------------------------------------------------
 " Vim plug (https://github.com/junegunn/vim-plug)
