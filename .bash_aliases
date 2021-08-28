@@ -640,3 +640,5 @@ function buildlatex() {
         && pdflatex $texfile \
         && pdflatex $texfile;
 }
+
+alias emf2png='libreoffice --headless --convert-to png '
