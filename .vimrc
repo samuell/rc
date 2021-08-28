@@ -182,3 +182,9 @@ let g:go_fmt_command = "goimports"
 " Tagbar Config
 " ---------------------------------------------------------------------------
 nmap <F8> :TagbarToggle<CR>
+
+" ---------------------------------------------------------------------------
+" Snakefile syntax highlightign
+" ---------------------------------------------------------------------------
+au BufNewFile,BufRead Snakefile set syntax=snakemake
+au BufNewFile,BufRead *.snake set syntax=snakemake
