@@ -626,7 +626,7 @@ function fit2gpx() {
     gpsbabel -i garmin_fit -o gpx -f $f -F ${f%.FIT}.gpx;
 }
 
-alias pypi-release='rm dist/* && python -m build && python -m twine upload dist/*'
+alias pypi-release='rm -rf dist build & python -m build -s -w . && python -m twine upload dist/*'
 
 alias cleanlatex='rm *.{blg,bbl,aux,log}'
 function buildlatex() {
