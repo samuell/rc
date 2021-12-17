@@ -45,6 +45,8 @@ alias glog='git log --pretty=oneline|tig'
 alias gdiff='git diff --no-index --'
 alias gwdiff='git diff --word-diff --no-index --'
 alias gcm='git commit -m'
+alias gcam='git commit -am'
+alias gcaa='git commit -a --amend'
 alias gco='git checkout'
 alias gcob='git checkout -b'
 alias gpush='git push'
@@ -558,6 +560,11 @@ alias wt='j; cd wiki; { echo "## Wiki"; echo; for f in $(ls | sed "s/.md//"); do
 alias wv='j; cd wiki; { echo "## Wiki"; echo; for f in $(ls | sed "s/.md//"); do echo "- [${f^}]($f)"; done } > index.md; git pull --rebase; vim index.md; git add *.md; git commit -m "Update wiki" *; git push;'
 alias ellipsis='echo …'
 
+function pdf_to_png() {
+    f=$1;
+    p=$2;
+    pdftoppm $f ${f%.pdf}-p$p -png -f $p -singlefile -ry 64 -rx 64
+}
 function pdfp1_to_png() {
     f=$1;
     pdftoppm $f ${f%.pdf} -png -f 1 -singlefile -ry 64 -rx 64
@@ -642,3 +649,4 @@ function buildlatex() {
 }
 
 alias emf2png='libreoffice --headless --convert-to png '
+alias clean-epub-html="sed -r 's/<[/]?(span|div)[^>]*>//g' | sed -r 's/<p[^>]*>/<p>/g' | grep -oP '<p.*' | sed -r 's/([a-zåäö])-([a-zåäö])/\1\2/g'"

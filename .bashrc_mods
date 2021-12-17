@@ -26,5 +26,4 @@ export GOPATH=~/proj/go
 export PATH=~/go/bin:$PATH
 export PATH=~/proj/go/bin:$PATH
 
-export PS1="[\h \W]$ "
-
+export PS1="[\u \W]$ "

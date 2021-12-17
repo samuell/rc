@@ -74,8 +74,6 @@ set nocompatible
 filetype plugin on
 syntax on
 
-nnoremap <C-O> :VimwikiVSplitLink(reuse=1)<CR>
-
 " ---------------------------------------------------------------------------
 " Vim plug (https://github.com/junegunn/vim-plug)
 " ---------------------------------------------------------------------------
