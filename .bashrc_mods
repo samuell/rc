@@ -1,7 +1,7 @@
 HISTSIZE=100000
 HISTFILESIZE=200000
 
-if [[ $SHELL = "/bin/bash" ]]; then
+if [[ $SHELL = "/bin/bash" && -f /etc/bash_completion ]]; then
 	source /etc/bash_completion;
 fi;
 
