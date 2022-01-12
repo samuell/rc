@@ -650,3 +650,15 @@ function buildlatex() {
 
 alias emf2png='libreoffice --headless --convert-to png '
 alias clean-epub-html="sed -r 's/<[/]?(span|div)[^>]*>//g' | sed -r 's/<p[^>]*>/<p>/g' | grep -oP '<p.*' | sed -r 's/([a-zåäö])-([a-zåäö])/\1\2/g'"
+function fixres() {
+	modeline=$(cvt 2560 1080 60 | tail -n 1 | cut -d" " -f 2-)
+	mode=$(echo $modeline | cut -d" " -f 1)
+	echo "Mode: $mode, Mode Line: $modeline"
+	echo "Now adding new mode ..."
+	xrandr --newmode $modeline
+	echo "Now trying to add mode ..."
+	xrandr --addmode DP-1 $mode
+    xrandr --output DP-1 --mode $mode
+    # Turn off laptop screen
+    xrandr --output eDP-1 --off
+}
