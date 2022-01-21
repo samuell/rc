@@ -657,8 +657,10 @@ function fixres() {
 	echo "Now adding new mode ..."
 	xrandr --newmode $modeline
 	echo "Now trying to add mode ..."
-	xrandr --addmode DP-1 $mode
-    xrandr --output DP-1 --mode $mode
+	xrandr --addmode HDMI-1 $mode
+    xrandr --output HDMI-1 --mode $mode
     # Turn off laptop screen
     xrandr --output eDP-1 --off
 }
+
+alias pip-install-local='pip install -e'
