@@ -1,6 +1,6 @@
 [core]
 	editor = vim
-	autocrlf = false
+	autocrlf = input
 [alias]
     cl = clone
     co = checkout
