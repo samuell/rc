@@ -664,3 +664,7 @@ function fixres() {
 }
 
 alias pip-install-local='pip install -e'
+
+alias ipypdb='ipython --pdb'
+
+alias cleanswp="find -name '*.swp' | xargs rm"
