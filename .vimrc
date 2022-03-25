@@ -65,6 +65,8 @@ nnoremap <C-J> :vs $journalfile<CR>
 nnoremap <F5> :source ~/.vimrc<CR>
 " Close window
 nnoremap <C-Q> :q<CR>
+" Format with black
+nnoremap <C-B> :Black<CR>
 
 " ---------------------------------------------------------------------------
 " Settings for vim wiki
@@ -85,6 +87,7 @@ call plug#begin('~/.vim/plugs')
 Plug 'jpalardy/vim-slime', { 'for': 'python' }
 Plug 'hanschen/vim-ipython-cell', { 'for': 'python' } " https://github.com/hanschen/vim-ipython-cell
 Plug 'davidhalter/jedi-vim', { 'for': 'python' }
+Plug 'psf/black', { 'branch': 'stable', 'for': 'python' }
 
 " Go stuff
 Plug 'fatih/vim-go', { 'for': [ 'go', 'go2' ] }
