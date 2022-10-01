@@ -668,3 +668,19 @@ alias pip-install-local='pip install -e'
 alias ipypdb='ipython --pdb'
 
 alias cleanswp="find -name '*.swp' | xargs rm"
+
+# Open multiple files side-by-side
+alias vim='vim -O'
+
+alias sq3=sqlite3
+
+alias ki='touch .kopiaignore'
+
+function update_garmin() {
+    cd /media/$USER/GARMIN/GARMIN/REMOTESW
+    rm -f EPO.BIN.OLD
+    mv EPO.BIN{,.OLD}
+    echo "Updating Garmin EPO.BIN ..."
+    wget https://github.com/StevenMaude/epo-bin/raw/epo-bin/EPO.BIN
+    echo "Done!"
+}
