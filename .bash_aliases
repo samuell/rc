@@ -377,6 +377,7 @@ function lf() {
     ls -1tr | tail -n 1;
 }
 alias cutt='cut -c -$COLUMNS'
+alias col="awk -F'\t' '{ print \$1 \"\t\" \$2 \"\t\" \$3 \"\t\" \$4 \"\t\" \$5 \"\t\" \$6 \"\t\" \$7 \"\t\" \$8 \"\t\" \$9 }'"
 div() {
     echo "=========================================================================="
     echo " $1"
@@ -630,7 +631,7 @@ function filedate() {
 }
 function fit2gpx() {
     f=$1;
-    gpsbabel -i garmin_fit -o gpx -f $f -F ${f%.FIT}.gpx;
+    gpsbabel -i garmin_fit -o gpx -f $f -F ${f%.fit}.gpx;
 }
 
 alias pypi-release='rm -rf dist build & python -m build -s -w . && python -m twine upload dist/*'
@@ -683,4 +684,9 @@ function update_garmin() {
     echo "Updating Garmin EPO.BIN ..."
     wget https://github.com/StevenMaude/epo-bin/raw/epo-bin/EPO.BIN
     echo "Done!"
+}
+alias brave8181='brave-browser --proxy-server="socks5://localhost:8181"'
+
+function git_creation_date() {
+    git log --follow --format=%ad --date default $1 | tail -1
 }

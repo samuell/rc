@@ -17,3 +17,6 @@
     st = status
     wdiff = diff --word-diff
     url-origin = remote get-url origin
+[user]
+    name = Samuel Lampa
+    email = shl@rilspace.com

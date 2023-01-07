@@ -25,5 +25,6 @@ export GOPATH=~/proj/go
 
 export PATH=~/go/bin:$PATH
 export PATH=~/proj/go/bin:$PATH
+export PATH=~/opt/codon/bin:$PATH
 
 export PS1="[\u \W]$ "
