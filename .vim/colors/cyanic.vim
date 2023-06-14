@@ -14,8 +14,8 @@ hi Normal		  guifg=white guibg=black
 hi Scrollbar	  guifg=darkgrey guibg=grey
 hi Menu			  guifg=white guibg=cyan
 hi Pmenu          guifg=white guibg=magenta ctermfg=White ctermbg=Magenta
-hi SpecialKey	  ctermfg=darkred  guifg=#cc0000
-hi NonText		  ctermfg=darkred  guifg=#cc0000
+hi SpecialKey	  ctermfg=lightred  guifg=#cc0000
+hi NonText		  ctermfg=lightred  guifg=#cc0000
 hi Directory	  ctermfg=brown  guifg=#cc8000
 hi ErrorMsg		  term=standout    ctermfg=grey  ctermbg=red  guifg=White  guibg=Red
 hi Search		  cterm=NONE ctermfg=black  ctermbg=yellow guifg=white  guibg=Lightyellow
@@ -54,7 +54,7 @@ hi link Function		Identifier
 hi link Conditional		Statement
 hi link Repeat			Statement
 hi link Label			Statement
-hi Operator             ctermfg=darkred
+hi Operator             ctermfg=lightred
 hi link Keyword			Statement
 hi link Exception		Statement
 hi link Include			Keyword
