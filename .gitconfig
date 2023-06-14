@@ -20,3 +20,5 @@
 [user]
     name = Samuel Lampa
     email = shl@rilspace.com
+[init]
+	defaultBranch = main
