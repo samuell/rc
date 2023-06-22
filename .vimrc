@@ -99,6 +99,9 @@ set hidden
 let g:racer_cmd = "/home/shl/.cargo/bin/racer"
 let g:racer_experimental_completer = 1
 
+" Nextflow
+Plugin 'LukeGoodsell/nextflow-vim'
+
 augroup Racer
     autocmd!
     autocmd FileType rust nmap <buffer> gd         <Plug>(rust-def)
