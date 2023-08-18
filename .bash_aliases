@@ -690,3 +690,5 @@ alias brave8181='brave-browser --proxy-server="socks5://localhost:8181"'
 function git_creation_date() {
     git log --follow --format=%ad --date default $1 | tail -1
 }
+
+alias capitalize='python3 -c "import sys; print(sys.stdin.read().title())"'

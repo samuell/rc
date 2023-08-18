@@ -28,5 +28,6 @@ export PATH=~/proj/go/bin:$PATH
 export PATH=~/opt/codon/bin:$PATH
 export PATH=~/opt/pycharm/bin:$PATH
 export PATH=~/opt/nextflow:$PATH
+export PATH=~/opt/figtree/bin:$PATH
 
 export PS1="[\u \W]$ "

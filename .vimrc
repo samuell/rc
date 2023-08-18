@@ -59,7 +59,7 @@ nnoremap <C-I> :vs<CR>
 " Open .vimrc
 nnoremap <C-E> :vs ~/.vimrc<CR>
 " Open today's journal
-let $journalfile="/home/shl/journal/" . strftime("%Y/%m/%Y%m%d-%u.md")
+let $journalfile="/home/shl/journal/wiki/" . strftime("%Y.md")
 nnoremap <C-J> :vs $journalfile<CR>
 " Refresh vim
 nnoremap <F5> :source ~/.vimrc<CR>
