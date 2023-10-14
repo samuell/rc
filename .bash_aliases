@@ -692,3 +692,41 @@ function git_creation_date() {
 }
 
 alias capitalize='python3 -c "import sys; print(sys.stdin.read().title())"'
+
+# The following can be run to clean up the HTML from the pdf2txt.py script of
+# PDF Miner, used to extract HTML from PDFs
+# See: https://pypi.org/project/pdfminer/
+function clean_pdfminer_output() {
+    caps="[A-ZÅÄÖ\?\!\:\"]"
+    tr "\n" " " | \
+    sed -r 's|<body>|<body style="max-width:800px;">|g' | \
+    sed -r 's|<div[^>]+>|\n<p>|g' | \
+    sed -r 's|<\/div>|\n</p>|g' | \
+    sed -r 's|([A-Za-zåäöÅÄÖ])\-[\ ]+<br>[\ ]+<br>|\1|g' | \
+    sed -r 's|<br>[\ ]+<br>|</p>\n<p>|g' | \
+    sed -r 's|<br>||g' | \
+    sed -r 's|<span[^>]+BoldItalic[^>]+>([^<]*)<\/span>|<b><i>\1</i></b>|g' | \
+    sed -r 's|<span[^>]+Italic[^>]+>([^<]*)<\/span>|<i>\1</i>|g' | \
+    sed -r 's|<span[^>]+Bold[^>]+>([^<]*)<\/span>|<i>\1</i>|g' | \
+    sed -r 's|</?span[^>]*>||g' | \
+    sed -r 's/([A-Za-zåäöÅÄÖ])\-[\ ]+<br>([A-Za-zåäöÅÄÖ])/\1\2/g' | \
+    sed -r 's/([A-Za-zåäöÅÄÖ])\-[\ ]+([A-Za-zåäöÅÄÖ])/\1\2/g' | \
+    sed -r 's|”|"|g' | \
+    sed -r "s|<i>(${caps})(${caps}{2,}(\ ${caps}{2,}){,10})\ <\/i>|<h3>\U\1\L\2</h3><p>|g" | \
+    sed -r "s|(${caps})(${caps}{2,}(\ ${caps}{2,}){,10})\ ?$|<h3>\U\1\L\2</h3><p>|g" | \
+    sed    's|  | |g' | \
+    sed    's|…|...|g' | \
+    sed -r 's|([A-Za-zåäö][\."])([0-9]{1,2})|\1 [\2]|g' | \
+    sed -r 's|([A-Za-zåäö][\."])\ ([0-9]{1,2})\.|\1 [\2].|g'
+}
+
+function htmlize_pdf() {
+    pdffile=$1;
+    if [ ! $pdffile ]; then
+        echo "Usage: htmlize_pdf <pdffile.pdf>";
+    else
+        pdf2txt -t html -o _$pdffile.raw.html $pdffile;
+        cat _$pdffile.raw.html | clean_pdfminer_output > $pdffile.html;
+        open $pdffile.html &
+    fi;
+}
