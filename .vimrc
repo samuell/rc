@@ -100,7 +100,7 @@ let g:racer_cmd = "/home/shl/.cargo/bin/racer"
 let g:racer_experimental_completer = 1
 
 " Nextflow
-Plugin 'LukeGoodsell/nextflow-vim'
+Plug 'LukeGoodsell/nextflow-vim'
 
 augroup Racer
     autocmd!
@@ -129,6 +129,9 @@ Plug 'preservim/nerdtree'
 
 " Tagbar
 Plug 'preservim/tagbar'
+
+" TOML syntax highlightign
+Plug 'cespare/vim-toml'
 
 " Initialize plugin system
 call plug#end()
