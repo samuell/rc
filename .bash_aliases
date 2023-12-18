@@ -25,6 +25,8 @@ alias ebl='vs ~/.bashrc_local'
 alias ep='vs ~/.profile'
 alias ebp='vs ~/.bash_profile'
 alias et='vim ~/.tmux.conf'
+bmfile=~/.config/gtk-3.0/bookmarks
+alias ebo='vs $bmfile'
 
 # --------------------------------------------------------------------------------
 # Various short-hand commands
@@ -351,6 +353,11 @@ bookmark() {
     dir=$(pwd);
     echo "alias c.$name='c $dir'" >> ~/.bash_aliases_local
     source ~/.bash_aliases_local
+
+    rm -f $bmfile.bak
+    mv $bmfile $bmfile.bak
+    echo "file://$(pwd) $name" > $bmfile
+    cat $bmfile.bak >> $bmfile
 }
 alias bm='bookmarks'
 bookmarks() {
