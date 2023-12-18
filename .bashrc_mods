@@ -1,5 +1,6 @@
 HISTSIZE=100000
 HISTFILESIZE=200000
+HISTTIMEFORMAT="%Y-%m-%d %T "
 
 if [[ $SHELL = "/bin/bash" && -f /etc/bash_completion ]]; then
 	source /etc/bash_completion;
@@ -29,5 +30,12 @@ export PATH=~/opt/codon/bin:$PATH
 export PATH=~/opt/pycharm/bin:$PATH
 export PATH=~/opt/nextflow:$PATH
 export PATH=~/opt/figtree/bin:$PATH
+export PATH=~/bin:$PATH
 
 export PS1="[\u \W]$ "
+
+export R_LIBS_USER=~/.rlibs
+
+export PATH=~/opt/zotero:$PATH
+
+export SINGULARITY_TMPDIR="/tmp"
