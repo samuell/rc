@@ -59,7 +59,7 @@ nnoremap <C-I> :vs<CR>
 " Open .vimrc
 nnoremap <C-E> :vs ~/.vimrc<CR>
 " Open today's journal
-let $journalfile="/home/shl/journal/wiki/" . strftime("%Y.md")
+let $journalfile="/home/shl/journal/" . strftime("%Y.md")
 nnoremap <C-J> :vs $journalfile<CR>
 " Refresh vim
 nnoremap <F5> :source ~/.vimrc<CR>
@@ -67,6 +67,8 @@ nnoremap <F5> :source ~/.vimrc<CR>
 nnoremap <C-Q> :q<CR>
 " Format with black
 nnoremap <C-B> :Black<CR>
+" Esc on Alt+Q
+inoremap <M-Q> <ESC>
 
 " ---------------------------------------------------------------------------
 " Settings for vim wiki
@@ -169,6 +171,7 @@ nnoremap gd :call jedi#goto()<CR>
 " NERD Tree
 " ---------------------------------------------------------------------------
 let NERDTreeIgnore=['\.pyc', '\~$']
+let NERDTreeShowHidden=1
 nnoremap <c-f> :NERDTreeFocus<CR>
 nnoremap <c-n> :NERDTree<CR>
 nnoremap tt :NERDTreeToggle<CR>
@@ -179,6 +182,9 @@ nnoremap ff :NERDTreeFind<CR>
 " ---------------------------------------------------------------------------
 let g:ctrlp_map = '<c-p>'
 let g:ctrlp_cmd = 'CtrlP'
+" Search all subfolders of the path that Vim was started in, not the currently
+" open file.
+let g:ctrlp_working_path_mode = 0
 
 " Vim-Go config
 " ---------------------------------------------------------------------------
@@ -194,3 +200,10 @@ nmap <F8> :TagbarToggle<CR>
 " ---------------------------------------------------------------------------
 au BufNewFile,BufRead Snakefile set syntax=snakemake
 au BufNewFile,BufRead *.snake set syntax=snakemake
+
+" ---------------------------------------------------------------------------
+" Cursorline config (Needs to be last, as otherwise overwritten by something
+" else)
+" ---------------------------------------------------------------------------
+set cursorline
+hi CursorLine cterm=NONE ctermbg=darkgrey
