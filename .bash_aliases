@@ -737,3 +737,52 @@ function htmlize_pdf() {
         open $pdffile.html &
     fi;
 }
+
+na() {
+    alias_name=$1;
+    aliased_command=$2;
+    echo "alias $alias_name='$aliased_command'" >> ~/.bash_aliases_local
+    source ~/.bash_aliases_local
+}
+
+# Singularity commands
+alias si=singularity
+alias sish='si shell'
+alias siex='si exec'
+alias sick='si check'
+alias sivf='si verify'
+
+
+alias croppdf="sed 's/MediaBox \[ 0 0 612 792 \]/MediaBox \[ 100 100 512 692 \]/g'"
+
+function sep() {
+    echo
+    echo "# ---------------------------------------------------------------------------------";
+    echo "#                                  $f";
+    echo "# ---------------------------------------------------------------------------------";
+    echo
+}
+
+alias watch_inotify_here="inotifywait -mr . | tee ../inotifywait_$(date +%Y%m%d-%H%M%S).log"
+
+alias dm="xfce4-display-settings --minimal"
+
+alias seqs='seqkit seq -s'
+
+alias sk='seqkit'
+
+alias uc='sort | uniq -c'
+
+alias tgo='tinygo'
+
+function md2html {
+    infile=$1;
+    pandoc -i $infile -o ${infile%.md}.html \
+      --highlight-style=kate \
+      --standalone \
+      -H <(echo "<style>body { max-width: 800px; margin: 0 auto; } div.sourceCode, pre { padding: 0.5em; background: #eee; }</style>")
+}
+
+alias fn='find -name'
+
+alias skss='seqkit seq -s'
