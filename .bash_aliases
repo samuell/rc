@@ -503,6 +503,12 @@ Container commands:
     wait      Block until a container stops, then print its exit code
 EOM
 }
+# Connect to a docker container with a shell
+alias dps='docker ps'
+function dsh() {
+    docker exec -it $1 bash
+}
+alias drunimg='docker run --entrypoint /bin/bash -it'
 alias fixbrokendesktop='rm -rf ~/.cache/sessions'
 alias godate='echo "Mon Jan 2 15:04:05 -0700 MST 2006"'
 alias mapesctocapslock='/usr/bin/setxkbmap -option "caps:escape"'
@@ -786,3 +792,8 @@ function md2html {
 alias fn='find -name'
 
 alias skss='seqkit seq -s'
+
+function debugnf() {
+    sed -i '2s/^/set -x\n/' .command.{run,sh};
+    sed -i 's/rm /#rm /g' .command.run;
+}

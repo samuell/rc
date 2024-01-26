@@ -102,7 +102,7 @@ let g:racer_cmd = "/home/shl/.cargo/bin/racer"
 let g:racer_experimental_completer = 1
 
 " Nextflow
-Plug 'LukeGoodsell/nextflow-vim'
+Plug 'Mxrcon/nextflow-vim'
 
 augroup Racer
     autocmd!
@@ -185,6 +185,8 @@ let g:ctrlp_cmd = 'CtrlP'
 " Search all subfolders of the path that Vim was started in, not the currently
 " open file.
 let g:ctrlp_working_path_mode = 0
+" Custom find command to find hidden files as well
+let g:ctrlp_user_command = 'find %s -type f -not -path "*/.git/*"'
 
 " Vim-Go config
 " ---------------------------------------------------------------------------
