@@ -797,3 +797,24 @@ function debugnf() {
     sed -i '2s/^/set -x\n/' .command.{run,sh};
     sed -i 's/rm /#rm /g' .command.run;
 }
+
+function histhere() {
+    export HISTFILE="$PWD/.bash_history"
+    history -a
+}
+
+alias hh='histhere'
+
+function seqpos() {
+    if [[ ! $1 ]] || [[ ! $2 ]] || [[ ! $3 ]]; then
+        echo "Usage: seqpos <fasta-file> <pos> <context>"
+    else
+        seqfile=$1;
+        pos=$2;
+        ctx=$3;
+        seqkit seq -s $seqfile | cut -c $(($pos-$ctx))-$(($pos+$ctx)) | coldna
+        for i in $(seq 1 $ctx); do
+            printf " "
+        done && echo "|"
+    fi;
+}
