@@ -114,7 +114,7 @@ alias elast='llast | xargs vim'
 alias vlast='llast | xargs vim'
 # Misc
 alias s='less -SiR'
-alias z='zless -SiR'
+alias zs='zless -SiR'
 alias py='python'
 alias p='python'
 alias pm='python manage.py'
@@ -159,12 +159,12 @@ c() {
     cd "$1";
     ls -ltra --color=always | tail -n 25;
     echo " ";
-    pwd;
+    pushd .;
 }
 alias th='thunar . &'
-alias ..='cd ..'
-alias ....='cd ../..'
-alias ......='cd ../../..'
+alias ..='c ..'
+alias ....='c ../..'
+alias ......='c ../../..'
 mkcd() {
     mkdir -p $1;
     cd $1;
@@ -818,3 +818,12 @@ function seqpos() {
         done && echo "|"
     fi;
 }
+
+# Different ways of executiong the pdb/ipdb debugger
+
+alias pypdb='python -m pdb'
+alias pyipdb='python -m ipdb'
+alias pytestpdb='pytest --pdb'
+alias pytestipdb='pytest --pdb --pdbcls=IPython.terminal.debugger:TerminalPdb -s'
+
+alias gobininfo='go version -m'
