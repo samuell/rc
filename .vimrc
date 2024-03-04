@@ -123,6 +123,10 @@ Plug 'vim-crystal/vim-crystal'
 " Vim wiki
 Plug 'vimwiki/vimwiki'
 
+" Fzf support
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
+
 " Ctrl+P support
 Plug 'kien/ctrlp.vim'
 
@@ -186,7 +190,7 @@ let g:ctrlp_cmd = 'CtrlP'
 " open file.
 let g:ctrlp_working_path_mode = 0
 " Custom find command to find hidden files as well
-let g:ctrlp_user_command = 'find %s -type f -not -path "*/.git/*"'
+let g:ctrlp_user_command = 'find %s -type f -not -path "*/.git/*" -not -path "*/__pycache__/*"'
 
 " Vim-Go config
 " ---------------------------------------------------------------------------
