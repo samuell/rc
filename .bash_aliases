@@ -855,6 +855,12 @@ function seqpos() {
             printf " "
         done && echo "|"
     fi;
+profile_bash() {
+    bash_script=$1;
+    bash -x $bash_script \
+        |& while IFS= read -r line; do echo $(date +%s.%6N) $line; done \
+        | awk 'BEGIN { prevt=0; prevc="" } { compt=$1-prevt; prevt=$1; printf("%.6f", compt); print " " prevc; prevc=$0; }' \
+        | tail -n +2
 }
 
 # Different ways of executiong the pdb/ipdb debugger
