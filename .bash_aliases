@@ -25,6 +25,7 @@ alias ebl='vs ~/.bashrc_local'
 alias ep='vs ~/.profile'
 alias ebp='vs ~/.bash_profile'
 alias et='vim ~/.tmux.conf'
+alias em='vim ~/.my.cnf'
 bmfile=~/.config/gtk-3.0/bookmarks
 alias ebo='vs $bmfile'
 
@@ -96,7 +97,7 @@ alias ts='tmux switch'
 alias tss='tmux switch -s'
 alias tl='tmux list-sessions'
 # The ls command
-alias ls='ls --color=auto -h'
+alias ls='ls --color=auto -h --group-directories-first'
 alias l='ls -1'
 alias ll='ls -l'
 alias la='ls -1a'
@@ -113,7 +114,7 @@ alias lslast='llast | xargs less -i'
 alias elast='llast | xargs vim'
 alias vlast='llast | xargs vim'
 # Misc
-alias s='less -SiR'
+alias s='less -SiRX'
 alias zs='zless -SiR'
 alias py='python'
 alias p='python'
@@ -157,7 +158,7 @@ function gitsshify() {
 # --------------------------------------------------------------------------------
 c() {
     cd "$1";
-    ls -ltra --color=always | tail -n 25;
+    ls -la --color=always | tail -n 25;
     echo " ";
     pushd .;
 }
@@ -755,6 +756,7 @@ na() {
 alias si=singularity
 alias sish='si shell'
 alias siex='si exec'
+alias sirn='si run'
 alias sick='si check'
 alias sivf='si verify'
 
@@ -789,7 +791,9 @@ function md2html {
       -H <(echo "<style>body { max-width: 800px; margin: 0 auto; } div.sourceCode, pre { padding: 0.5em; background: #eee; }</style>")
 }
 
-alias fn='find -name'
+function ff() {
+    find -name "*$1*"
+}
 
 alias skss='seqkit seq -s'
 
@@ -827,3 +831,10 @@ alias pytestpdb='pytest --pdb'
 alias pytestipdb='pytest --pdb --pdbcls=IPython.terminal.debugger:TerminalPdb -s'
 
 alias gobininfo='go version -m'
+
+alias bat='bat --theme="Visual Studio Dark+"'
+
+function loc() {
+    search_str=$1;
+    find -name '*'$search_str'*' | grep $search_str;
+}
