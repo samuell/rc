@@ -192,6 +192,20 @@ let g:ctrlp_working_path_mode = 0
 " Custom find command to find hidden files as well
 let g:ctrlp_user_command = 'find %s -type f -not -path "*/.git/*" -not -path "*/__pycache__/*"'
 
+" ---------------------------------------------------------------------------
+" FZF Config
+" ---------------------------------------------------------------------------
+" Initialize configuration dictionary
+let g:fzf_vim = {}
+let g:fzf_vim.preview_window = ['right,50%', 'ctrl-/']
+
+noremap <c-g> :Rg<Cr>
+noremap <c-c> :Commits<Cr>
+"noremap <c-i> :Files<Cr>
+"From https://github.com/junegunn/fzf/issues/453
+noremap <silent> <expr> <c-i> (expand('%') =~ 'NERD_tree' ? "\<c-w>\<c-l>" : '').":Files\<cr>"
+
+" ---------------------------------------------------------------------------
 " Vim-Go config
 " ---------------------------------------------------------------------------
 let g:go_fmt_command = "goimports"
@@ -213,3 +227,12 @@ au BufNewFile,BufRead *.snake set syntax=snakemake
 " ---------------------------------------------------------------------------
 set cursorline
 hi CursorLine cterm=NONE ctermbg=darkgrey
+
+
+" ---------------------------------------------------------------------------
+" Misc fixes
+" ---------------------------------------------------------------------------
+" Fix broken syntax highlighting for long lines.
+" See: https://github.com/vim/vim/issues/2790
+syntax sync minlines=10000
+noremap <c-x> :syntax sync minlines=10000<Cr>
