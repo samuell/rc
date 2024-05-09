@@ -379,7 +379,7 @@ ogvtoavi_h264() {
 }
 extractaudio() {
     infile=$1
-    avconv -i "$infile" "$infile.wav"
+    ffmpeg -i "$infile" "$infile.wav"
 }
 function lf() {
     ls -1tr | tail -n 1;
@@ -717,6 +717,7 @@ function clean_pdfminer_output() {
     sed -r 's|<div[^>]+>|\n<p>|g' | \
     sed -r 's|<\/div>|\n</p>|g' | \
     sed -r 's|([A-Za-zåäöÅÄÖ])\-[\ ]+<br>[\ ]+<br>|\1|g' | \
+    sed -r 's|([A-Za-zåäöÅÄÖ])\-[\ ]+|\1|g' | \
     sed -r 's|<br>[\ ]+<br>|</p>\n<p>|g' | \
     sed -r 's|<br>||g' | \
     sed -r 's|<span[^>]+BoldItalic[^>]+>([^<]*)<\/span>|<b><i>\1</i></b>|g' | \
@@ -731,7 +732,8 @@ function clean_pdfminer_output() {
     sed    's|  | |g' | \
     sed    's|…|...|g' | \
     sed -r 's|([A-Za-zåäö][\."])([0-9]{1,2})|\1 [\2]|g' | \
-    sed -r 's|([A-Za-zåäö][\."])\ ([0-9]{1,2})\.|\1 [\2].|g'
+    sed -r 's|([A-Za-zåäö][\."])\ ([0-9]{1,2})\.|\1 [\2].|g' | \
+    sed $'s/[^[:print:]\t]//g'
 }
 
 function htmlize_pdf() {
