@@ -578,7 +578,12 @@ alias ellipsis='echo …'
 function pdf_to_png() {
     f=$1;
     p=$2;
-    pdftoppm $f ${f%.pdf}-p$p -png -f $p -singlefile -ry 64 -rx 64
+    r=$3;
+    if [[ $f == "" || $p == "" || $r == "" ]]; then
+        echo "Usage: pdf_to_png <infile.pdf> <pageno> <dpi>"
+    else
+        pdftoppm $f ${f%.pdf}-p$p-${r}dpi -png -f $p -singlefile -ry $r -rx $r
+    fi;
 }
 function pdfp1_to_png() {
     f=$1;
@@ -840,3 +845,5 @@ function loc() {
     search_str=$1;
     find -name '*'$search_str'*' | grep $search_str;
 }
+
+alias sbl='source ~/.bash_aliases_local'
