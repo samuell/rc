@@ -847,3 +847,6 @@ function loc() {
 }
 
 alias sbl='source ~/.bash_aliases_local'
+
+alias rs='redshift -b 0.9 -O 4800'
+alias rx='redshift -x'
