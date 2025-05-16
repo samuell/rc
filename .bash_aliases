@@ -34,8 +34,9 @@ alias e.bo='vs $bmfile'
 # Various short-hand commands
 # --------------------------------------------------------------------------------
 # Text editing
-alias e='vim'
-alias v='vim'
+alias vim=nvim
+alias e='nvim'
+alias v='nvim'
 alias n='nano'
 # Aptitude
 alias aptg='sudo apt-get -y install'
