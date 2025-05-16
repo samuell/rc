@@ -12,22 +12,23 @@ vs() {
     vim +10000 $1;
     . $1;
 }
-alias ev='vim ~/.vimrc'
-alias ei='vim ~/.irods/.irodsEnv'
-alias evc='vim ~/.vim/colors/samllight.vim'
-alias ea='vs ~/.bash_aliases'
+alias e.v='vim ~/.vimrc'
+alias e.nv='cd ~/.config/nvim; nv init.lua'
+alias e.i='vim ~/.irods/.irodsEnv'
+alias e.vc='vim ~/.vim/colors/samllight.vim'
+alias e.a='vs ~/.bash_aliases'
 alias sb='source ~/.bashrc'
-alias eg='vim ~/.gitconfig'
+alias e.g='vim ~/.gitconfig'
 alias eal='vs ~/.bash_aliases_local'
-alias eb='vs ~/.bashrc'
-alias ebm='vs ~/.bashrc_mods'
-alias ebl='vs ~/.bashrc_local'
-alias ep='vs ~/.profile'
-alias ebp='vs ~/.bash_profile'
-alias et='vim ~/.tmux.conf'
-alias em='vim ~/.my.cnf'
+alias e.b='vs ~/.bashrc'
+alias e.bm='vs ~/.bashrc_mods'
+alias e.bl='vs ~/.bashrc_local'
+alias e.p='vs ~/.profile'
+alias e.bp='vs ~/.bash_profile'
+alias e.t='vim ~/.tmux.conf'
+alias e.m='vim ~/.my.cnf'
 bmfile=~/.config/gtk-3.0/bookmarks
-alias ebo='vs $bmfile'
+alias e.bo='vs $bmfile'
 
 # --------------------------------------------------------------------------------
 # Various short-hand commands
