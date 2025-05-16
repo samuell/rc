@@ -40,7 +40,8 @@ hi! link vimSep Normal
 hi! link vimParenSep Normal
 hi! link vimCommentString Comment
 hi! link markdownUrl String
-hi Normal guifg=#bcbcbc guibg=#1c1c1c gui=NONE cterm=NONE
+"hi Normal guifg=#bcbcbc guibg=#1c1c1c gui=NONE cterm=NONE
+hi Normal guifg=#bcbcbc guibg=NONE gui=NONE cterm=NONE
 hi Statusline guifg=#1c1c1c guibg=#9e9e9e gui=NONE cterm=NONE
 hi StatuslineNC guifg=#1c1c1c guibg=#767676 gui=NONE cterm=NONE
 hi VertSplit guifg=#767676 guibg=#767676 gui=NONE cterm=NONE
