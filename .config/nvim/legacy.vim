@@ -149,6 +149,9 @@ Plug 'cespare/vim-toml'
 Plug 'vim-pandoc/vim-pandoc-syntax'
 Plug 'quarto-dev/quarto-vim'
 
+" NvimColorizer
+Plug 'norcalli/nvim-colorizer.lua'
+
 " Initialize plugin system
 call plug#end()
 
@@ -247,4 +250,4 @@ hi CursorLine cterm=NONE ctermbg=darkgrey
 syntax sync minlines=10000
 noremap <c-x> :syntax sync minlines=10000<Cr>
 
-colorscheme default " Set the color scheme
+colorscheme cyanic " Set the color scheme
