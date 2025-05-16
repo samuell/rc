@@ -31,6 +31,7 @@ export PATH=~/opt/pycharm/bin:$PATH
 export PATH=~/opt/nextflow:$PATH
 export PATH=~/opt/figtree/bin:$PATH
 export PATH=~/opt/act:$PATH
+export PATH=~/opt/ollama/bin:$PATH
 export PATH=~/bin:$PATH
 
 export PS1="[\u \W]$ "
@@ -39,4 +40,4 @@ export R_LIBS_USER=~/.rlibs
 
 export PATH=~/opt/zotero:$PATH
 
-export SINGULARITY_TMPDIR="/tmp"
+export APPTAINER_TMPDIR="/tmp"

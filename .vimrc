@@ -139,6 +139,10 @@ Plug 'preservim/tagbar'
 " TOML syntax highlightign
 Plug 'cespare/vim-toml'
 
+" Quarto
+Plug 'vim-pandoc/vim-pandoc-syntax'
+Plug 'quarto-dev/quarto-vim'
+
 " Initialize plugin system
 call plug#end()
 

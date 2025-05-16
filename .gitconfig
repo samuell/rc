@@ -1,24 +1,35 @@
 [core]
 	editor = vim
 	autocrlf = input
+	pager = delta
 [alias]
+    a = add
+    ap = add -p
+    d = diff
     cl = clone
     co = checkout
     cob = checkout -b
+    cp = cherry-pick
     ps = push
     psf = push -f
     pl = pull
     plr = pull --rebase
-    ct = commit
-    ctm = commit -m
-    ctam = commit -am
+    c = commit
+    cm = commit -m
+    cam = commit -am
     ap = add -p
     rb = rebase
     st = status
     wdiff = diff --word-diff
+    diffw = diff -w
     url-origin = remote get-url origin
+    l = log --pretty=oneline
 [user]
     name = Samuel Lampa
-    email = shl@rilspace.com
+    email = samuel.lampa@scilifelab.se
 [init]
 	defaultBranch = main
+[interactive]
+	diffFilter = delta --color-only
+[delta]
+	navigate = true

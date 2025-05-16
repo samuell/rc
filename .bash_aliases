@@ -46,6 +46,7 @@ alias aptu='sudo apt-get update'
 alias aptug='sudo apt-get update && sudo apt-get upgrade -y'
 alias ubuntu_version='lsb_release -a'
 # Git
+alias git='PRE_COMMIT_ALLOW_NO_CONFIG=1 git'
 alias glog='git log --pretty=oneline|tig'
 alias gdiff='git diff --no-index --'
 alias gwdiff='git diff --word-diff --no-index --'
@@ -59,7 +60,12 @@ alias gpp='git pull --rebase; git push;'
 alias gadd='git add'
 alias gb='git branch -av'
 alias gd='git diff | tig'
-alias dus='du -sh * | sort -hr | tee .dus.$(date +%Y%m%d.%H%M%S)'
+alias gbs='git bisect'
+alias gbss='git bisect start'
+alias gbsb='git bisect bad'
+alias gbsg='git bisect good'
+alias gbsr='git bisect reset'
+alias dus='du -sh * | sort -h | tee .dus.$(date +%Y%m%d.%H%M%S)'
 alias dush='for f in ./.*; do du -sh $f; done | sort -hr | tee .dush.$(date +%Y%m%d.%H%M%S)'
 alias t='tig'
 # SSH
@@ -99,16 +105,25 @@ alias ts='tmux switch'
 alias tss='tmux switch -s'
 alias tl='tmux list-sessions'
 # The ls command
-alias ls='ls --color=auto -h --group-directories-first'
+alias ls='ls --color=auto --group-directories-first'
 alias l='ls -1'
+alias ld='ls -1d'
+
 alias ll='ls -l'
 alias la='ls -1a'
 alias ltr='ls -1tr'
 alias ltra='ls -1tra'
+
+alias lld='ls -ld'
+alias lad='ls -1ad'
+alias ltrd='ls -1trd'
 alias ltrad='ls -1trad'
+
 alias lltr='ls -ltr'
 alias lltra='ls -ltra'
+alias lltrd='ls -ltrd'
 alias lltrad='ls -ltrad'
+
 alias last='tail -n 1'
 alias llast='ls -1tr | last'
 alias slast='llast | xargs less -iS'
@@ -121,7 +136,7 @@ alias zs='zless -SiR'
 alias py='python'
 alias p='python'
 alias pm='python manage.py'
-alias ipy='ipython'
+alias ipy='ipython3'
 alias igrep='grep -i'
 psa() {
 	term=$1;
@@ -172,6 +187,7 @@ mkcd() {
     mkdir -p $1;
     cd $1;
 }
+alias=mckd=mkcd
 
 # --------------------------------------------------------------------------------
 # Go(lang) stuff
@@ -362,7 +378,8 @@ bookmark() {
     echo "file://$(pwd) $name" > $bmfile
     cat $bmfile.bak >> $bmfile
 }
-alias bm='bookmarks'
+alias bm='bookmark'
+alias bms='bookmarks'
 bookmarks() {
     cat ~/.bash_aliases_local | grep "alias c"
 }
@@ -581,10 +598,11 @@ function pdf_to_png() {
     f=$1;
     p=$2;
     r=$3;
-    if [[ $f == "" || $p == "" || $r == "" ]]; then
-        echo "Usage: pdf_to_png <infile.pdf> <pageno> <dpi>"
+    o=$4;
+    if [[ $f == "" || $p == "" || $r == "" || $o == "" ]]; then
+        echo "Usage: pdf_to_png <infile.pdf> <pageno> <dpi> <out-filename>"
     else
-        pdftoppm $f ${f%.pdf}-p$p-${r}dpi -png -f $p -singlefile -ry $r -rx $r
+        pdftoppm $f ${o} -png -f $p -singlefile -ry $r -rx $r
     fi;
 }
 function pdfp1_to_png() {
@@ -841,7 +859,7 @@ alias pytestipdb='pytest --pdb --pdbcls=IPython.terminal.debugger:TerminalPdb -s
 
 alias gobininfo='go version -m'
 
-alias bat='bat --theme="Visual Studio Dark+"'
+#alias bat='bat --theme="Visual Studio Dark+"'
 
 function loc() {
     search_str=$1;
@@ -850,5 +868,25 @@ function loc() {
 
 alias sbl='source ~/.bash_aliases_local'
 
-alias rs='redshift -b 0.9 -O 4800'
+alias rs='redshift -b 0.9 -O 5200'
+alias rsr='redshift -O 5200'
 alias rx='redshift -x'
+
+alias nf=nextflow
+alias nfc=nf-core
+alias nfc.pl='nf-core -v -l .nfcore-piplines-lint-$(date +%Y%m%d-%H%M%S).log pipelines lint -d .'
+
+alias nft=nf-test
+
+alias mm=micromamba
+alias mm.a='micromamba activate'
+
+alias pd='pandoc'
+alias pdli='pandoc --list-input-formats'
+alias pdlo='pandoc --list-output-formats'
+
+alias inst='sudo dpkg -i'
+
+function webp2png() {
+    dwebp $1 -o $2
+}
