@@ -56,7 +56,7 @@ inoremap <silent> <C-A>  <Nop>
 " Split editor window vertically
 nnoremap <C-I> :vs<CR>
 " Open .vimrc
-nnoremap <C-E> :vs ~/.vimrc<CR>
+nnoremap <C-E> :vs ~/.config/nvim/init.lua<CR>
 " Open today's journal
 let $journalfile="/home/shl/journal/" . strftime("%Y.md")
 nnoremap <C-J> :vs $journalfile<CR>
@@ -87,9 +87,6 @@ call plug#begin('~/.vim/plugs')
 " Cyanic color scheme
 Plug 'rktjmp/lush.nvim'
 Plug 'samuell/cyanic.nvim'
-
-" LSP support
-Plug 'neovim/nvim-lspconfig'
 
 " Python stuff
 Plug 'jpalardy/vim-slime', { 'for': 'python' }
