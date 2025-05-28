@@ -105,7 +105,7 @@ hi String guifg=#af87af guibg=NONE gui=NONE cterm=NONE
 "hi Character guifg=#87d787 guibg=NONE gui=NONE cterm=NONE
 hi Character guifg=#ff00af guibg=NONE gui=NONE cterm=NONE
 "hi Identifier guifg=#87afaf guibg=NONE gui=NONE cterm=NONE
-hi Identifier guifg=#5f87af guibg=NONE gui=NONE cterm=NONE
+hi Identifier guifg=NONE guibg=NONE gui=NONE cterm=NONE
 "hi Statement guifg=#af87af guibg=NONE gui=NONE cterm=NONE
 hi Statement guifg=#5f87af guibg=NONE gui=NONE cterm=NONE
 hi PreProc guifg=#af875f guibg=NONE gui=NONE cterm=NONE
