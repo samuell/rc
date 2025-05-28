@@ -7,26 +7,27 @@
 # --------------------------------------------------------------------------------
 # Edit dotfiles
 # --------------------------------------------------------------------------------
-alias vim="bind -r '\\C-s' && stty stop '' -ixoff && vim"
+alias vim="bind -r '\\C-s' && stty stop '' -ixoff && nvim"
+alias nvim="bind -r '\\C-s' && stty stop '' -ixoff && nvim"
 vs() {
-    vim +10000 $1;
+    nvim +10000 $1;
     . $1;
 }
-alias e.v='vim ~/.vimrc'
+alias e.v='nvim ~/.vimrc'
 alias e.nv='cd ~/.config/nvim; nv init.lua'
-alias e.i='vim ~/.irods/.irodsEnv'
-alias e.vc='vim ~/.vim/colors/samllight.vim'
+alias e.i='nvim ~/.irods/.irodsEnv'
+alias e.vc='nvim ~/.vim/colors/samllight.vim'
 alias e.a='vs ~/.bash_aliases'
 alias sb='source ~/.bashrc'
-alias e.g='vim ~/.gitconfig'
+alias e.g='nvim ~/.gitconfig'
 alias eal='vs ~/.bash_aliases_local'
 alias e.b='vs ~/.bashrc'
 alias e.bm='vs ~/.bashrc_mods'
 alias e.bl='vs ~/.bashrc_local'
 alias e.p='vs ~/.profile'
 alias e.bp='vs ~/.bash_profile'
-alias e.t='vim ~/.tmux.conf'
-alias e.m='vim ~/.my.cnf'
+alias e.t='nvim ~/.tmux.conf'
+alias e.m='nvim ~/.my.cnf'
 bmfile=~/.config/gtk-3.0/bookmarks
 alias e.bo='vs $bmfile'
 
@@ -34,7 +35,6 @@ alias e.bo='vs $bmfile'
 # Various short-hand commands
 # --------------------------------------------------------------------------------
 # Text editing
-alias vim=nvim
 alias e='nvim'
 alias v='nvim'
 alias n='nano'
