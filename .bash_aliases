@@ -890,3 +890,10 @@ alias inst='sudo dpkg -i'
 function webp2png() {
     dwebp $1 -o $2
 }
+
+function unspacify() {
+    old=$1
+    new=${old//\ /_}
+    echo "Renaming $old -> $new ..."
+    mv "$old" "$new"
+}
