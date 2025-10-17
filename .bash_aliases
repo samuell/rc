@@ -900,3 +900,35 @@ function unspacify() {
     echo "Renaming $old -> $new ..."
     mv "$old" "$new"
 }
+
+function setdpi() {
+    dpi=$1
+    xfconf-query -c xsettings -p /Xft/DPI -s $dpi
+    xfce4-panel -r
+}
+
+function count_ont_reads_for_seqtime() {
+    hours=$1;
+    files=${@:2};
+    if [[ -z ${hours} || -z ${files} ]]; then
+        echo "Usage: ont_reads_for_seqtime <hours> <files>";
+        return;
+    fi;
+    echo "Counting reads sequenced within ${hours} hours in these files: ${files%% *} ...";
+    seqkit fx2tab ${files} | sort -k 8,8 | awk '{ split($8, dt, "[=T:Z-]"); ts=mktime(dt[2]" "dt[3]" "dt[4]" "dt[5]" "dt[6]" "dt[7]); } NR==1 { start=ts } { seqtime=ts-start; print(seqtime"\t"$0) }' | awk '( $1 <= '${hours}'*3600 )' | wc -l
+}
+
+function ont_reads_for_seqtime() {
+    hours=$1;
+    files=${@:2};
+    if [[ -z ${hours} || -z ${files} ]]; then
+        echo "Usage: reads_for_seqtime <hours> <files>";
+        return;
+    fi;
+    seqkit fx2tab ${files} \
+        | sort -k 8,8 \
+        | awk '{ split($8, dt, "[=T:Z-]"); ts=mktime(dt[2]" "dt[3]" "dt[4]" "dt[5]" "dt[6]" "dt[7]); } NR==1 { start=ts } { seqtime=ts-start; print(seqtime"\t"$0) }' \
+        | awk '( $1 <= '${hours}'*3600 )' \
+        | cut -d$'\t' -f 2- \
+        | seqkit tab2fx
+}
