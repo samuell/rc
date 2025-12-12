@@ -28,7 +28,5 @@
     email = samuel.lampa@scilifelab.se
 [init]
 	defaultBranch = main
-[interactive]
-	diffFilter = delta --color-only
 [delta]
 	navigate = true

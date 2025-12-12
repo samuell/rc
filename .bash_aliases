@@ -68,9 +68,11 @@ alias gbss='git bisect start'
 alias gbsb='git bisect bad'
 alias gbsg='git bisect good'
 alias gbsr='git bisect reset'
+alias g=git
+alias t='tig'
+# disk usage
 alias dus='du -sh * | sort -h | tee .dus.$(date +%Y%m%d.%H%M%S)'
 alias dush='for f in ./.*; do du -sh $f; done | sort -hr | tee .dush.$(date +%Y%m%d.%H%M%S)'
-alias t='tig'
 # SSH
 alias sshpass='ssh -o PubkeyAuthentication=no'
 alias scppass='scp -o PubkeyAuthentication=no'
