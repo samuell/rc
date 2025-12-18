@@ -26,7 +26,7 @@ source ~/.bashrc
 echo "--------------------------------------------------------------------------------"
 echo "Installing apt packages ..."
 echo "--------------------------------------------------------------------------------"
-sudo apt install git tig tmux tree htop bash-completion wget fuse3
+sudo apt install git tig tmux tree htop bash-completion wget fuse3 rsync unzip
 
 echo "--------------------------------------------------------------------------------"
 echo "Installing NeoVim as AppImage ..."
