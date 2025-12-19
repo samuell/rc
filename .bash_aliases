@@ -378,10 +378,12 @@ bookmark() {
     echo "alias c.$name='c $dir'" >> ~/.bash_aliases_local
     source ~/.bash_aliases_local
 
-    rm -f $bmfile.bak
-    mv $bmfile $bmfile.bak
-    echo "file://$(pwd) $name" > $bmfile
-    cat $bmfile.bak >> $bmfile
+    if [[ -d $(dirname ${bmfile}) ]]; then
+        rm -f $bmfile.bak
+        mv $bmfile $bmfile.bak
+        echo "file://$(pwd) $name" > $bmfile
+        cat $bmfile.bak >> $bmfile
+    fi
 }
 alias bm='bookmark'
 alias bms='bookmarks'
