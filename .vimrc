@@ -124,7 +124,7 @@ Plug 'vim-crystal/vim-crystal'
 Plug 'vimwiki/vimwiki'
 
 " Fzf support
-Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+"Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 
 " Ctrl+P support

@@ -48,7 +48,7 @@ alias ubuntu_version='lsb_release -a'
 # Git
 alias git='PRE_COMMIT_ALLOW_NO_CONFIG=1 git'
 alias glog='git log --pretty=oneline|tig'
-alias gdiff='git diff --no-index --'
+alias gdiff='git diff --no-index --color=always --'
 alias gwdiff='git diff --word-diff --no-index --'
 alias gcm='git commit -m'
 alias gcam='git commit -am'
@@ -62,6 +62,7 @@ alias gb='git branch'
 alias gba='git branch -a'
 alias gbv='git branch -v'
 alias gbav='git branch -av'
+alias gbc='git branch -av | grep -C10 "*"'
 alias gd='git diff | tig'
 alias gbs='git bisect'
 alias gbss='git bisect start'
@@ -133,6 +134,7 @@ alias last='tail -n 1'
 alias llast='ls -1tr | last'
 alias slast='llast | xargs less -iS'
 alias lslast='llast | xargs less -i'
+alias tflast='llast | xargs tail -f'
 alias elast='llast | xargs vim'
 alias vlast='llast | xargs vim'
 # Misc
@@ -294,7 +296,7 @@ alias logmemusage='sar -r 1'
 # --------------------------------------------------------------------------------
 alias kb='setxkbmap'
 alias se='setxkbmap se'
-us() {
+function us() {
     echo "Setting keyboard map to US";
     setxkbmap -layout us -option caps:escape;
     #xmodmap -e "remove Lock = Caps_Lock" # Gives an error message, so uncommented for now
@@ -550,9 +552,7 @@ alias t4='tree -L 4'
 alias t5='tree -L 5'
 alias t6='tree -L 6'
 alias t7='tree -L 7'
-function colt() {
-    column -t $1 | less -Sri
-}
+alias colt="column -t -s $'\t'"
 
 alias awkcsv="gawk -vFPAT='[^,]*|\"[^\"]*"
 alias findlatest='find . -printf "%T@ %Tc %p\n" | sort -n'
@@ -713,6 +713,9 @@ function fixres() {
 alias pip-install-local='pip install -e'
 
 alias ipypdb='ipython --pdb'
+alias pypdb='python -m pdb'
+alias pytpdb='pytest --pdb'
+alias pytipdb='pytest --pdb --pdbcls=IPython.terminal.debugger:TerminalPdb'
 
 alias cleanswp="find -name '*.swp' | xargs rm"
 
@@ -855,6 +858,8 @@ function seqpos() {
             printf " "
         done && echo "|"
     fi;
+}
+
 profile_bash() {
     bash_script=$1;
     bash -x $bash_script \
@@ -941,4 +946,27 @@ function ont_reads_for_seqtime() {
         | awk '( $1 <= '${hours}'*3600 )' \
         | cut -d$'\t' -f 2- \
         | seqkit tab2fx
+
+alias l1='ls -1'
+
+function loc() {
+    # Print full location of a file
+    echo $(pwd)/${1}
+}
+
+alias cl=clear
+
+function showfa() {\
+    for f in *1.fasta; do
+        for l in $(seqkit seq -s ${f}); do
+            echo ${f}$(printf "\t")${l};
+        done \
+            | awk '{ print $1 "\t" $3 "\t" $2 }' \
+            | sort \
+            | uniq -c \
+            | sort -nr;
+    done \
+        | colt \
+        | dnacol \
+        | s
 }

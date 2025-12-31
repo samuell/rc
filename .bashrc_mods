@@ -40,4 +40,7 @@ export R_LIBS_USER=~/.rlibs
 
 export PATH=~/opt/zotero:$PATH
 
+export SINGULARITY_TMPDIR="/tmp"
 export APPTAINER_TMPDIR="/tmp"
+
+export PIXI_HOME="$HOME/.pixi"
