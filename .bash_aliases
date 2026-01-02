@@ -554,7 +554,7 @@ alias t6='tree -L 6'
 alias t7='tree -L 7'
 alias colt="column -t -s $'\t'"
 function colts() {
-    column -t $1 | less -Sri
+    column -t -s $'\t' $1 | less -Sri
 }
 
 alias awkcsv="gawk -vFPAT='[^,]*|\"[^\"]*"
