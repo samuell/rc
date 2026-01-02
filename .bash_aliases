@@ -953,6 +953,7 @@ function ont_reads_for_seqtime() {
         | awk '( $1 <= '${hours}'*3600 )' \
         | cut -d$'\t' -f 2- \
         | seqkit tab2fx
+}
 
 alias l1='ls -1'
 
