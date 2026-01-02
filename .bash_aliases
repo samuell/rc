@@ -138,8 +138,8 @@ alias tflast='llast | xargs tail -f'
 alias elast='llast | xargs vim'
 alias vlast='llast | xargs vim'
 # Misc
-alias s='less -SiRX'
-alias zs='zless -SiR'
+alias s='less -RiSX'
+alias zs='zless -RiSX'
 alias py='python'
 alias p='python'
 alias pm='python manage.py'
@@ -199,7 +199,7 @@ alias=mckd=mkcd
 # --------------------------------------------------------------------------------
 # Go(lang) stuff
 # --------------------------------------------------------------------------------
-alias gocov='go test -coverprofile=.cover.out; \
+alias gocov='go test -coverprofile=.cover.out ./...; \
     go tool cover -html=.cover.out -o coverage.html; \
     brave-browser coverage.html; \
     sleep 1; \
@@ -553,6 +553,9 @@ alias t5='tree -L 5'
 alias t6='tree -L 6'
 alias t7='tree -L 7'
 alias colt="column -t -s $'\t'"
+function colts() {
+    column -t $1 | less -Sri
+}
 
 alias awkcsv="gawk -vFPAT='[^,]*|\"[^\"]*"
 alias findlatest='find . -printf "%T@ %Tc %p\n" | sort -n'
@@ -677,7 +680,11 @@ function filedate() {
 }
 function fit2gpx() {
     f=$1;
-    gpsbabel -i garmin_fit -o gpx -f $f -F ${f%.fit}.gpx;
+    if [[ -z $f ]]; then
+        echo "Usage: fit2gpx <file.fit>";
+    else
+        gpsbabel -i garmin_fit -o gpx -f $f -F ${f%.fit}.gpx;
+    fi
 }
 
 alias pypi-release='rm -rf dist build & python -m build -s -w . && python -m twine upload dist/*'
@@ -720,7 +727,7 @@ alias pytipdb='pytest --pdb --pdbcls=IPython.terminal.debugger:TerminalPdb'
 alias cleanswp="find -name '*.swp' | xargs rm"
 
 # Open multiple files side-by-side
-alias vim='vim -O'
+alias vim='nvim -O'
 
 alias sq3=sqlite3
 
@@ -929,8 +936,8 @@ function count_ont_reads_for_seqtime() {
         echo "Usage: ont_reads_for_seqtime <hours> <files>";
         return;
     fi;
-    echo "Counting reads sequenced within ${hours} hours in these files: ${files%% *} ...";
-    seqkit fx2tab ${files} | sort -k 8,8 | awk '{ split($8, dt, "[=T:Z-]"); ts=mktime(dt[2]" "dt[3]" "dt[4]" "dt[5]" "dt[6]" "dt[7]); } NR==1 { start=ts } { seqtime=ts-start; print(seqtime"\t"$0) }' | awk '( $1 <= '${hours}'*3600 )' | wc -l
+    count=$(seqkit fx2tab ${files} | sort -k 8,8 | awk '{ split($8, dt, "[=T:Z-]"); ts=mktime(dt[2]" "dt[3]" "dt[4]" "dt[5]" "dt[6]" "dt[7]); } NR==1 { start=ts } { seqtime=ts-start; print(seqtime"\t"$0) }' | awk '( $1 <= '${hours}'*3600 )' | wc -l)
+    echo ${count}$'\t'${files%% *};
 }
 
 function ont_reads_for_seqtime() {
@@ -970,3 +977,5 @@ function showfa() {
         | dnacol \
         | s
 }
+
+alias ps1='export PS1="$ "'
