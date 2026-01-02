@@ -979,3 +979,13 @@ function showfa() {
 }
 
 alias ps1='export PS1="$ "'
+
+function note() {
+    read -p "Enter title separated with dashes: " title
+    read -p "Write your note: " note;
+    cd ~/journal;
+    filename=$(date +%Y%m%d)-${title}.md
+    echo "${note}" > ${filename};
+    git add ${filename};
+    echo "Wrote note to ${filename} ...";
+}
