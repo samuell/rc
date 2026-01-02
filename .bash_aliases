@@ -956,7 +956,7 @@ function loc() {
 
 alias cl=clear
 
-function showfa() {\
+function showfa() {
     for f in *1.fasta; do
         for l in $(seqkit seq -s ${f}); do
             echo ${f}$(printf "\t")${l};
