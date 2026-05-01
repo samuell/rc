@@ -35,8 +35,8 @@ alias e.bo='vs $bmfile'
 # Various short-hand commands
 # --------------------------------------------------------------------------------
 # Text editing
-alias e='nvim'
-alias v='nvim'
+alias e='nvim -O'
+alias v='nvim -O'
 alias n='nano'
 # Aptitude
 alias aptg='sudo apt-get -y install'
@@ -74,7 +74,7 @@ alias dus='du -sh * | sort -h | tee .dus.$(date +%Y%m%d.%H%M%S)'
 alias dush='for f in ./.*; do du -sh $f; done | sort -hr | tee .dush.$(date +%Y%m%d.%H%M%S)'
 alias t='tig'
 # disk usage
-alias dus='du -sh * | sort -h | tee .dus.$(date +%Y%m%d.%H%M%S)'
+alias dus='du -sh * .??* | sort -h | tee .dus.$(date +%Y%m%d.%H%M%S)'
 alias dush='for f in ./.*; do du -sh $f; done | sort -hr | tee .dush.$(date +%Y%m%d.%H%M%S)'
 # SSH
 alias sshpass='ssh -o PubkeyAuthentication=no'
@@ -188,6 +188,8 @@ c() {
     echo " ";
     pushd .;
 }
+export -f c
+alias clast='for d in $(llast); do c ${d}; done'
 alias th='thunar . &'
 alias ..='c ..'
 alias ....='c ../..'
@@ -554,6 +556,7 @@ alias t4='tree -L 4'
 alias t5='tree -L 5'
 alias t6='tree -L 6'
 alias t7='tree -L 7'
+alias colc="column -t -s,"
 alias colt="column -t -s $'\t'"
 function colts() {
     column -t -s $'\t' $1 | less -Sri
@@ -896,6 +899,7 @@ function loc() {
 alias sbl='source ~/.bash_aliases_local'
 
 alias rs='redshift -b 0.9 -O 5200'
+alias rss='redshift -O 5600'
 alias rsr='redshift -O 5200'
 alias rx='redshift -x'
 
@@ -987,9 +991,126 @@ function note() {
     read -p "Enter title separated with dashes: " title
     read -p "Write your note: " note;
     cd ~/journal;
-    filename=$(date +%Y%m%d)-${title}.md
-    echo "${note}" > ${filename};
+    filename=$(date +%y%m%d)-$(echo "${title}" | tr " :,;_" "-" | tr '[:upper:]' '[:lower:]').md
+    echo "# ${title}" > ${filename};
+    echo >> ${filename};
+    echo "${note}" >> ${filename};
     git add ${filename};
     echo "Wrote note to ${filename} ...";
 }
-alias rx='redshift -x'
+
+alias db='duckdb -c'
+
+alias awkt='awk -F"\t"'
+
+function kalk() {
+    awk "BEGIN { print $1 }";
+}
+
+
+capitalize_csv() {
+  awk -v OFS="," -F',' '
+  function cap(s) {
+    n = split(s, w, /[ &-]/)
+    seps = s
+    gsub(/[A-Za-zåäöÅÄÖéÉ]/,"",seps)
+    r = ""
+    idx = 1
+    for(i=1;i<=n;i++){
+      if(length(w[i])>0) w[i] = toupper(substr(w[i],1,1)) tolower(substr(w[i],2))
+      r = r w[i]
+      if(idx <= length(seps)) { r = r substr(seps, idx, 1); idx++ }
+    }
+    return r
+  }
+  {
+    OFS=","
+    $1 = cap($1)
+    $2 = cap($2)
+    print
+  }'
+}
+
+function plothist() {
+    outfile=$1
+    gnuplot -e "set terminal pngcairo size 1000,600; set output '$outfile'; binwidth=0.01;bin(x)=binwidth*floor(x/binwidth);set boxwidth binwidth;set style fill solid;plot '-' using (bin(\$1)):(1) smooth freq with boxes notitle; set output"
+}
+
+function shamview() {
+    samfile=$1;
+    (echo -e "QNAME\tFLAG\tRNAME\tPOS\tMAPQ\tCIGAR\tRNEXT\tPNEXT\tTLEN\tSEQ\tQUAL"; samtools view ${samfile}) \
+        | column -t \
+        | less -S
+}
+
+blastn2tsv() {
+    if [[ -z $1 || -z $2 || -z $3 ]]; then
+            echo "Usage blastn2tsv <query.fasta> <database-basename> <outputfile.tsv>";
+            return
+    fi
+    query=$1;
+    db=$2;
+    outfile=$3;
+    sci run "blastn -query ${query}  -db ${db} -num_threads 10 -outfmt '7 bitscore pident evalue length stitle sstrand qaccver saccver sseq' > ${outfile}"
+}
+
+get_ncbi_fasta_from_uid() {
+    if [[ -z $1 ]]; then
+        echo "Usage: get_ncbi_fasta <ncbi_uid>";
+        return;
+    fi
+    ncbi_uid=$1;
+    sci run "curl -s 'https://www.ncbi.nlm.nih.gov/sviewer/viewer.fcgi?id=${ncbi_uid}&db=nuccore&report=fasta&retmode=text&withmarkup=on&tool=portal&log$=seqview&maxdownloadsize=100000000' -o ${ncbi_uid}.fa"
+}
+
+function i.py() {
+    if [[ -z $1 ]]; then
+        echo "Usage: i.py <scriptname>"
+        return;
+    fi
+    scriptname=$1;
+cat > ${scriptname} <<EOF
+import argparse
+
+argp = argparse.ArgumentParser()
+argp.add_argument("--in", "-i", dest="infile", help="Input file", required=True)
+argp.add_argument("--out", "-o", help="Output file", required=True)
+args = argp.parse_args()
+
+def main():
+    with open(args.infile) as infile:
+        with open(args.out, "w") as outfile:
+            for line in infile:
+                outfile.write(line)
+
+if __name__ == "__main__":
+    main()
+EOF
+}
+
+function view_blastntsv() {
+    if [[ -z $1 ]]; then
+        echo "Usage: view_blastntsv <blast_output.tsv>"
+        return;
+    fi
+    blast_tsv_file=$1;
+    cat ${blast_tsv_file} | grep -P "(^# Fields: |^[0-9].*)" | sed "s/, /\t/g" | sed 's/# Fields: //g'
+}
+
+alias fx2tab='seqkit fx2tab'
+alias tab2fx='seqkit tab2fx'
+
+function sam2bam() {
+    samfile=$1;
+    bamfile=${samfile%.sam}.bam;
+    sci run "samtools view -b ${samfile} > ${bamfile}"
+}
+function sortbam() {
+    infile=$1;
+    outfile=${infile%.bam}_sort.bam;
+    sci run "samtools sort ${infile} > ${outfile}"
+}
+function indexbam() {
+    infile=$1;
+    sci run "samtools index ${infile}"
+}

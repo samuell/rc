@@ -1,5 +1,6 @@
 vim.cmd('source ~/.config/nvim/legacy.vim')
 
+
 vim.lsp.config['nextflow'] = {
   cmd = { 'java', '-jar', '/home/shl/opt/nfls/language-server-all.jar' },
   filetypes = { 'nextflow', 'nf', 'groovy', 'config' },

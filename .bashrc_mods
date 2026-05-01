@@ -44,3 +44,5 @@ export SINGULARITY_TMPDIR="/tmp"
 export APPTAINER_TMPDIR="/tmp"
 
 export PIXI_HOME="$HOME/.pixi"
+export PATH=/home/shl/proj/26/14-rtseq/opt/icarust/target/release:$PATH
+export PATH=~/opt/dorado/bin:$PATH
